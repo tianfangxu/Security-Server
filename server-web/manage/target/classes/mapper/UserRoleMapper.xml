@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mot.mapper.UserRoleMapper">
+
+    <insert id="insertUserRoleByRoleCode" >
+        insert INTO sy_role_user
+          (
+            user_id,
+            role_id,
+            create_time,
+            create_user,
+            update_time,
+            update_user,
+            delflag
+          ) values (
+            #{entity.userId},
+            (select id from sy_role where role_code = #{roleCode}),
+            #{entity.createTime},
+            #{entity.createUser},
+            #{entity.updateTime},
+            #{entity.updateUser},
+            #{entity.delflag}
+          )
+    </insert>
+
+  <insert id="insertUserRole" parameterType="java.util.List">
+    insert INTO sy_role_user (
+            user_id,
+            role_id,
+            create_time,
+            create_user,
+            update_time,
+            update_user,
+            delflag
+          ) values
+        <foreach collection="list" item="entity" separator=",">
+          (
+          #{entity.userId},
+          #{entity.roleId},
+          #{entity.createTime},
+          #{entity.createUser},
+          #{entity.updateTime},
+          #{entity.updateUser},
+          #{entity.delflag}
+          )
+        </foreach>
+  </insert>
+</mapper>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="msg">
+
+    </div>
+</body>
+<script type="text/javascript">
+    (function(){
+        const websocket = new WebSocket('ws://localhost:31002/channel');
+        websocket.onmessage = e => {
+            console.log('收到消息:', e.data);
+        }
+        websocket.onclose = e => {
+            let {code, reason} = e;
+            console.log(`链接断开:code=${code}, reason=${reason}`);
+        }
+        websocket.onopen = () => {
+            console.log(`链接建立...`);
+            let param1 = {"type":"login","body":"hello-login"};
+            let param2 = {"type":"text","body":"hello-textMessage"};
+            let param3 = {"type":"image","body":"hello-image"};
+            websocket.send(JSON.stringify(param1));
+            websocket.send(JSON.stringify(param2));
+            websocket.send(JSON.stringify(param3));
+        }
+        websocket.onerror = e => {
+            console.log('链接异常:', e);
+        }
+    })();
+
+</script>
+</html>

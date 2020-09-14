@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mot.mapper.UserMapper">
+    
+    <resultMap id="authUserModel" type="com.mot.model.AuthUserModel">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="avatar" column="avatar"/>
+        <result property="realName" column="real_name"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="sex" column="sex"/>
+        <result property="locked" column="locked"/>
+        <collection property="roleList" ofType="com.mot.model.ResultRoleInfoModel" column="role_id">
+            <result property="id" column="roleId"/>
+            <result property="roleCode" column="role_code"/>
+            <result property="roleName" column="role_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryLoginUser" resultMap="authUserModel" parameterType="java.lang.String">
+        SELECT
+            u.id, u.username, u.password, u.real_name, u.avatar, u.phone, u.email, u.sex, u.locked,
+            r.id roleId,r.role_code,r.role_name
+        FROM
+            sy_user u
+        LEFT JOIN sy_role_user ru ON ru.user_id = u.id
+        LEFT JOIN sy_role r ON r.id = ru.role_id
+        WHERE u.delflag = '1' and ru.delflag = '1' and r.delflag = '1' and
+            u.username = #{username}
+    </select>
+
+    <select id="queryUser" resultType="com.mot.entity.UserEntity" parameterType="com.mot.model.ParamUserModel">
+      select * from sy_user where delflag = '1'
+      <if test="model.username != null">
+        and username like #{model.username}
+      </if>
+      <if test="model.id != null ">
+          and id = #{model.id}
+      </if>
+        <if test="model.realName != null ">
+            and real_name like #{model.realName}
+        </if>
+        <if test="model.phone != null ">
+            and phone = #{model.phone}
+        </if>
+        <if test="model.email != null ">
+            and email = #{model.email}
+        </if>
+        <if test="model.sex != null ">
+            and sex = #{model.sex}
+        </if>
+        <if test="model.locked != null ">
+            and locked = #{model.locked}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+         limit ${model.page},${model.rows}
+    </select>
+
+    <select id="queryUserCount" resultType="java.lang.Integer" parameterType="com.mot.model.ParamUserModel">
+      select count(1) from sy_user where delflag = '1'
+      <if test="model.username != null">
+        and username like #{model.username}
+      </if>
+      <if test="model.id != null ">
+          and id = #{model.id}
+      </if>
+        <if test="model.realName != null ">
+            and real_name like #{model.realName}
+        </if>
+        <if test="model.phone != null ">
+            and phone = #{model.phone}
+        </if>
+        <if test="model.email != null ">
+            and email = #{model.email}
+        </if>
+        <if test="model.sex != null ">
+            and sex = #{model.sex}
+        </if>
+        <if test="model.locked != null ">
+            and locked = #{model.locked}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+    </select>
+
+    <insert id="insetUser" parameterType="com.mot.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sy_user
+            (
+                username,
+                password,
+                real_name,
+                avatar,
+                phone,
+                email,
+                sex,
+                locked,
+                create_time,
+                create_user,
+                update_time,
+                update_user,
+                delflag
+            )
+        VALUES
+            (
+                #{username},
+                #{password},
+                #{realName},
+                #{avatar},
+                #{phone},
+                #{email},
+                #{sex},
+                #{locked},
+                #{createTime},
+                #{createUser},
+                #{updateTime},
+                #{updateUser},
+                #{delflag}
+            )
+    </insert>
+
+    <update id="updateUser" parameterType="com.mot.entity.UserEntity">
+        update sy_user
+        <set>
+            username = #{entity.username} ,
+            real_name = #{entity.realName},
+            phone = #{entity.phone},
+            email = #{entity.email},
+            sex = #{entity.sex},
+            locked = #{entity.locked},
+            update_time = #{entity.updateTime},
+            update_user = #{entity.updateUser},
+            delflag = #{entity.delflag}
+        </set>
+        where id= #{entity.id}
+    </update>
+
+    <delete id="deleteAllRolesByUserId" parameterType="java.lang.String">
+        delete from sy_role_user where user_id = #{id}
+    </delete>
+
+    <update id="resetPassword" parameterType="com.mot.entity.UserEntity">
+        update sy_user
+        <set>
+            password = #{entity.password} ,
+            update_time = #{entity.updateTime},
+            update_user = #{entity.updateUser},
+            delflag = #{entity.delflag}
+        </set>
+        where id= #{entity.id}
+    </update>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mot.mapper.ResourceMapper">
+
+    <resultMap id="resultResourceModel" type="com.mot.model.ResultResourceModel">
+        <id property="id" column="id"/>
+        <result property="resourceCode" column="resource_code" />
+        <result property="resourceName" column="resource_name" />
+        <result property="resourceUrl" column="resource_url" />
+        <result property="sort" column="sort" />
+        <result property="parentId" column="parent_id" />
+        <result property="isLeaf" column="is_leaf" />
+        <result property="type" column="type" />
+        <result property="state" column="state" />
+    </resultMap>
+
+    <select id="queryResouceByRoleId" resultMap="resultResourceModel" parameterType="java.util.List">
+        SELECT
+            r.id, r.resource_code, r.resource_name, r.resource_url, r.sort, r.parent_id, r.is_leaf, r.type, r.state
+        FROM
+            sy_role_resource rr
+        LEFT JOIN sy_resource r ON rr.resource_id = r.id
+        WHERE rr.delflag = '1' and r.delflag = '1' and
+            rr.role_id in (
+            <foreach collection="list" item="roleId" separator=",">
+                #{roleId}
+            </foreach>
+            )
+    </select>
+
+    <select id="queryResouce" parameterType="com.mot.model.ParamResourceModel" resultType="com.mot.entity.ResourceEntity">
+        select * from sy_resource where delflag = '1'
+        <if test="model.resourceCode != null ">
+            and resource_code like #{model.resourceCode}
+        </if>
+        <if test="model.resourceName != null ">
+            and resource_name like #{model.resourceName}
+        </if>
+        <if test="model.type != null ">
+            and type = #{model.type}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+        limit ${model.page},${model.rows}
+    </select>
+
+    <select id="queryResouceCount" parameterType="com.mot.model.ParamResourceModel" resultType="java.lang.Integer">
+        select count(1) from sy_resource where delflag = '1'
+        <if test="model.resourceCode != null ">
+            and resource_code like #{model.resourceCode}
+        </if>
+        <if test="model.resourceName != null ">
+            and resource_name like #{model.resourceName}
+        </if>
+        <if test="model.type != null ">
+            and type = #{model.type}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+    </select>
+
+    <insert id="insertResource" parameterType="com.mot.entity.ResourceEntity">
+      INSERT INTO sy_resource
+            (
+                resource_code,
+                resource_name,
+                resource_url,
+                sort,
+                parent_id,
+                is_leaf,
+                `type`,
+                state,
+                create_time,
+                create_user,
+                update_time,
+                update_user,
+                delflag
+            )
+        VALUES
+            (
+                #{resourceCode},
+                #{resourceName},
+                #{resourceUrl},
+                #{sort},
+                #{parentId},
+                #{isLeaf},
+                #{type},
+                #{state},
+                #{createTime},
+                #{createUser},
+                #{updateTime},
+                #{updateUser},
+                #{delflag}
+            )
+    </insert>
+</mapper>
