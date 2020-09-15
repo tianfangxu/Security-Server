@@ -64,25 +64,25 @@ CREATE TABLE `sy_resource`  (
 -- ----------------------------
 -- Records of sy_resource
 -- ----------------------------
-INSERT INTO `sy_resource` VALUES (1, 'SYSTEM', '系统管理', NULL, 1, NULL, 0, 1, 1, '2020-08-29 22:44:04', '0', '2020-08-29 22:44:08', '0', 1);
-INSERT INTO `sy_resource` VALUES (2, 'USER', '用户管理', NULL, 1, 1, 1, 1, 1, '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', 1);
-INSERT INTO `sy_resource` VALUES (3, 'ROLE', '角色管理', '', 2, 1, 1, 1, 1, '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', 1);
-INSERT INTO `sy_resource` VALUES (4, 'DEPT', '部门管理', '', 3, 1, 1, 1, 1, '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', 1);
-INSERT INTO `sy_resource` VALUES (5, 'RESOURCE', '资源管理', '', 4, 1, 1, 1, 1, '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', 1);
-INSERT INTO `sy_resource` VALUES (6, 'queryUser', '查询用户', '/queryUser', 1, NULL, NULL, 2, 1, '2020-08-29 22:53:13', '0', '2020-08-29 22:53:21', '0', 1);
-INSERT INTO `sy_resource` VALUES (7, 'STRUK', '下级机构', NULL, 1, 4, 1, 1, 1, '2020-09-01 22:09:30', '0', '2020-09-01 22:09:34', '0', 1);
-INSERT INTO `sy_resource` VALUES (8, 'insertUser', '新增用户', '/insertUser', 2, NULL, NULL, 2, 1, '2020-09-03 15:15:18', '0', '2020-09-03 15:15:25', '0', 1);
-INSERT INTO `sy_resource` VALUES (9, 'queryRole', '查询角色', '/queryRole', 3, NULL, NULL, 2, 1, '2020-09-04 21:52:51', '0', '2020-09-04 21:52:54', '0', 1);
-INSERT INTO `sy_resource` VALUES (10, 'queryResource', '查询资源', '/queryResource', 4, NULL, NULL, 2, 1, '2020-09-04 21:52:51', '0', '2020-09-04 21:52:51', '0', 1);
-INSERT INTO `sy_resource` VALUES (11, 'insertResource', '新增资源', '/insertResource', 5, NULL, NULL, 2, 1, '2020-09-04 21:52:51', '0', '2020-09-04 21:52:51', '0', 1);
-INSERT INTO `sy_resource` VALUES (12, 'insertRole', '新增角色', '/insertRole', 6, NULL, 0, 2, 0, '2020-09-05 15:39:24', '0', NULL, NULL, 1);
-INSERT INTO `sy_resource` VALUES (13, 'queryRoleResource', '查询角色绑定资源', '/queryRoleResource', 7, NULL, 0, 2, 0, '2020-09-05 17:36:10', '0', NULL, NULL, 1);
-INSERT INTO `sy_resource` VALUES (14, 'batchInsertRoleResource', '新增角色绑定资源', '/batchInsertRoleResource', 8, NULL, 0, 2, 0, '2020-09-05 17:36:10', '0', '2020-09-05 23:13:46', '0', 1);
-INSERT INTO `sy_resource` VALUES (15, 'batchDeleteRoleResource', '删除角色绑定资源', '/batchDeleteRoleResource', 9, NULL, 0, 2, 0, '2020-09-05 17:36:10', '0', '2020-09-05 23:13:49', '0', 1);
-INSERT INTO `sy_resource` VALUES (16, 'batchUpdateRoleResource', '更新角色绑定资源', '/batchUpdateRoleResource', 10, NULL, 0, 2, 0, '2020-09-05 17:36:10', '0', '2020-09-05 23:13:49', '0', 1);
-INSERT INTO `sy_resource` VALUES (17, 'queryRoleByUserId', '查询用户角色', '/queryRoleByUserId', 11, NULL, 0, 2, 0, '2020-09-08 21:15:17', '1', NULL, NULL, 1);
-INSERT INTO `sy_resource` VALUES (18, 'updateUser', '更新用户', '/updateUser', 12, NULL, 0, 2, 0, '2020-09-12 15:03:22', '1', NULL, NULL, 1);
-INSERT INTO `sy_resource` VALUES (19, 'resetPassword', '重置密码', '/resetPassword', 13, NULL, 0, 2, 0, '2020-09-12 16:18:57', '1', NULL, NULL, 1);
+INSERT INTO `sy_resource` VALUES ('1', 'SYSTEM', '系统管理', null, '1', null, '0', '1', '1', '2020-08-29 22:44:04', '0', '2020-08-29 22:44:08', '0', '1');
+INSERT INTO `sy_resource` VALUES ('2', 'USER', '用户管理', null, '1', '1', '1', '1', '1', '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', '1');
+INSERT INTO `sy_resource` VALUES ('3', 'ROLE', '角色管理', '', '2', '1', '1', '1', '1', '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', '1');
+INSERT INTO `sy_resource` VALUES ('4', 'DEPT', '部门管理', '', '3', '1', '1', '1', '1', '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', '1');
+INSERT INTO `sy_resource` VALUES ('5', 'RESOURCE', '资源管理', '', '4', '1', '1', '1', '1', '2020-08-29 22:45:10', '0', '2020-08-29 22:45:13', '0', '1');
+INSERT INTO `sy_resource` VALUES ('6', 'queryUser', '管理系统.用户.查询', '/queryUser', '1', null, null, '2', '1', '2020-08-29 22:53:13', '0', '2020-08-29 22:53:21', '0', '1');
+INSERT INTO `sy_resource` VALUES ('7', 'STRUK', '下级机构', null, '1', '4', '1', '1', '1', '2020-09-01 22:09:30', '0', '2020-09-01 22:09:34', '0', '1');
+INSERT INTO `sy_resource` VALUES ('8', 'insertUser', '管理系统.用户.新增', '/insertUser', '2', null, null, '2', '1', '2020-09-03 15:15:18', '0', '2020-09-03 15:15:25', '0', '1');
+INSERT INTO `sy_resource` VALUES ('9', 'queryRole', '管理系统.角色.查询', '/queryRole', '3', null, null, '2', '1', '2020-09-04 21:52:51', '0', '2020-09-04 21:52:54', '0', '1');
+INSERT INTO `sy_resource` VALUES ('10', 'queryResource', '管理系统.资源.查询', '/queryResource', '4', null, null, '2', '1', '2020-09-04 21:52:51', '0', '2020-09-04 21:52:51', '0', '1');
+INSERT INTO `sy_resource` VALUES ('11', 'insertResource', '管理系统.资源.新增', '/insertResource', '5', null, null, '2', '1', '2020-09-04 21:52:51', '0', '2020-09-04 21:52:51', '0', '1');
+INSERT INTO `sy_resource` VALUES ('12', 'insertRole', '管理系统.角色.新增', '/insertRole', '6', null, '0', '2', '0', '2020-09-05 15:39:24', '0', null, null, '1');
+INSERT INTO `sy_resource` VALUES ('13', 'queryRoleResource', '管理系统.资源.查询角色绑定的资源', '/queryRoleResource', '7', null, '0', '2', '0', '2020-09-05 17:36:10', '0', null, null, '1');
+INSERT INTO `sy_resource` VALUES ('14', 'batchInsertRoleResource', '管理系统.资源.新增角色绑定的资源', '/batchInsertRoleResource', '8', null, '0', '2', '0', '2020-09-05 17:36:10', '0', '2020-09-05 23:13:46', '0', '1');
+INSERT INTO `sy_resource` VALUES ('15', 'batchDeleteRoleResource', '管理系统.资源.删除角色绑定的资源', '/batchDeleteRoleResource', '9', null, '0', '2', '0', '2020-09-05 17:36:10', '0', '2020-09-05 23:13:49', '0', '1');
+INSERT INTO `sy_resource` VALUES ('16', 'batchUpdateRoleResource', '管理系统.资源.更新角色绑定的资源', '/batchUpdateRoleResource', '10', null, '0', '2', '0', '2020-09-05 17:36:10', '0', '2020-09-05 23:13:49', '0', '1');
+INSERT INTO `sy_resource` VALUES ('17', 'queryRoleByUserId', '管理系统.角色.查询用户绑定的角色', '/queryRoleByUserId', '11', null, '0', '2', '0', '2020-09-08 21:15:17', '1', null, null, '1');
+INSERT INTO `sy_resource` VALUES ('18', 'updateUser', '管理系统.用户.更新', '/updateUser', '12', null, '0', '2', '0', '2020-09-12 15:03:22', '1', null, null, '1');
+INSERT INTO `sy_resource` VALUES ('19', 'resetPassword', '管理系统.用户.重置密码', '/resetPassword', '13', null, '0', '2', '0', '2020-09-12 16:18:57', '1', null, null, '1');
 
 -- ----------------------------
 -- Table structure for sy_role
