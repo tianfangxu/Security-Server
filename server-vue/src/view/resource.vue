@@ -37,7 +37,9 @@
 		    </el-table-column>
 		    <el-table-column  label="操作" > 
 		    	<template slot-scope="scope">
-			        <!--<el-button @click="handleClick(scope.row)" type="text" size="small">操作</el-button>-->
+		    		<el-popconfirm  title="确认将该数据删除吗？" @onConfirm="deleteResource(scope.row)" >
+			        	<el-button slot="reference" type="text" size="small">删除</el-button>
+			        </el-popconfirm>
 			    </template>
 		    </el-table-column>
 		</el-table>
@@ -107,7 +109,6 @@
 				},
 				tempdata:{
 					total:0,
-					rowwsDate:{},
 				},
 				dialogVisible:false,
 				insertResource:{
@@ -162,9 +163,29 @@
 	                this.resource.page = page;
 	                this.getData();
 	        },
-	        handleClick(row) {
-	       	 	this.tempdata.rowwsDate = row;
-	       	 	this.dialogVisible = true;
+	        deleteResource(row) {
+	       	 	var loding = this.$loading({ fullscreen: true });
+	       	 	this.$axios.post(this.$root.baseUrl+"deleteResource",{id:row.id},{
+		        	headers:{
+						'Content-Type': 'application/json',
+						'x-phone-header-id':this.$root.token,
+						'X-XSRF-TOKEN':this.$root.getCookie("XSRF-TOKEN")
+					}
+		        }).then((res) => {
+		        	loding.close();
+		       		this.handleClose();
+		        	this.getData();
+		        	this.$notify({
+				          message: res.data.message,
+				          type: 'success'
+				    });
+		        }, (res) => {
+		        	loding.close();
+		        	this.$notify({
+				          message: "无权限操作",
+				          type: 'error'
+				    });
+		        })
 	      	},
 			handleClose(){
 				this.dialogVisible = false;

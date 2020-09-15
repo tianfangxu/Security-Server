@@ -68,7 +68,9 @@
 				:data="roel_resource_method_all"
 				:titles="['无权限资源', '已有资源']"
 				filterable
-				 ></el-transfer>
+				 >
+				<span slot-scope="{ option }" :title="option.label">{{ option.label }}</span>
+			</el-transfer>
 			<span slot="footer" class="dialog-footer">
 		    	<el-button @click="handle__resource_Close">取 消</el-button>
 		    	<el-button type="primary" @click="updateRoleResource">保存</el-button>
