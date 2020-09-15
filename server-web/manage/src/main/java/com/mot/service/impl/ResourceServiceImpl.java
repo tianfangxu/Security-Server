@@ -1,6 +1,7 @@
 package com.mot.service.impl;
 
 import com.mot.common.utils.ModelUtils;
+import com.mot.common.utils.RedisUtil;
 import com.mot.entity.ResourceEntity;
 import com.mot.mapper.ResourceMapper;
 import com.mot.model.*;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
@@ -21,6 +23,9 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Autowired
     ResourceMapper resourceMapper;
+
+    @Autowired
+    RedisUtil redisUtil;
 
     @Override
     public Map queryResource(ParamResourceModel model) {
@@ -53,5 +58,21 @@ public class ResourceServiceImpl implements ResourceService {
         model.transferEntity(resourceEntity,currentUser.getId());
         int count = resourceMapper.insertResource(resourceEntity);
         return ResultBaseModel.getSuccess().setMessage("成功新增"+count+"条数据");
+    }
+
+    @Override
+    @Transactional(rollbackFor = RuntimeException.class)
+    public ResultBaseModel deleteResource(ParamResourceModel model) {
+        if (ModelUtils.isNullOrEmpty(model.getId())) {
+            return ResultBaseModel.getFailure().setMessage("主键必须传！");
+        }
+        int count = resourceMapper.deleteResource(model.getId());
+        if (count == 1){
+            //删除关联表数据
+            int i = resourceMapper.deleteRoleResourceByResourceId(model.getId());
+            //删除缓存中数据
+            redisUtil.deleteUniformKeys(redisUtil.userLoginPrefix+"*");
+        }
+        return ResultBaseModel.getSuccess().setMessage("操作成功");
     }
 }

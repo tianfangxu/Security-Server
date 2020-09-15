@@ -9,4 +9,6 @@ public interface ResourceService {
     Map queryResource(ParamResourceModel model);
 
     ResultBaseModel insertResource(ParamResourceModel model);
+
+    ResultBaseModel deleteResource(ParamResourceModel model);
 }

@@ -101,4 +101,11 @@
                 #{delflag}
             )
     </insert>
+
+    <delete id="deleteResource" parameterType="java.lang.String">
+        delete from sy_resource where id = #{id}
+    </delete>
+    <delete id="deleteRoleResourceByResourceId" parameterType="java.lang.String">
+        delete from sy_role_resource where resource_id = #{id}
+    </delete>
 </mapper>

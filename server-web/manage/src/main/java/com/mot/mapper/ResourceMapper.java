@@ -17,4 +17,8 @@ public interface ResourceMapper {
     int queryResouceCount(@Param("model") ParamResourceModel model);
 
     int insertResource(ResourceEntity entity);
+
+    int deleteResource(@Param("id") String id);
+
+    int deleteRoleResourceByResourceId(@Param("id")String id);
 }

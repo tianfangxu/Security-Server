@@ -35,4 +35,14 @@ public class ResourceController {
             return ResultBaseModel.getError().setMessage("系统错误，请联系管理员！");
         }
     }
+
+    @RequestMapping(value = URLConstant.RESOURCE_URL_03,method = RequestMethod.POST)
+    public ResultBaseModel deleteResource(@RequestBody ParamResourceModel model){
+        try {
+            return resourceService.deleteResource(model);
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResultBaseModel.getError().setMessage("系统错误，请联系管理员！");
+        }
+    }
 }
