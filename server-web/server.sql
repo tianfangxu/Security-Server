@@ -216,4 +216,20 @@ INSERT INTO `sy_user` VALUES (4, 'wangwu', '$2a$10$edhctyI5urWOcZbhbGDiSuX0ok7vd
 INSERT INTO `sy_user` VALUES (5, 'zhaoliu', '$2a$10$poF7v3HWGcTAvfuA7LNuruB99Dn8otasgOJrY1beNpedJE2OzLolm', '赵六', NULL, '457685489', '457685489@qq.com', 1, 0, '2020-09-04 20:45:34', '0', '2020-09-12 16:21:27', '1', 1);
 INSERT INTO `sy_user` VALUES (6, 'nareto', '$2a$10$lNtKCSJ4ismbtAufS2P9XeUdyDGTFCgv9GdMIz.OkY.LDJXx511nS', '鸣人', NULL, '18130157026', '18130157026@qq.com', 1, 0, '2020-09-04 18:13:58', '0', NULL, NULL, 1);
 
+DROP TABLE IF EXISTS `sy_log_action`;
+CREATE TABLE `sy_log_action` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `server` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '服务名称',
+  `url` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '访问地址',
+  `request` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '请求参数',
+  `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci COMMENT '返回值',
+  `create_time` datetime DEFAULT NULL COMMENT '访问时间',
+  `create_user_name` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '操作人姓名',
+  `create_user_id` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '访问用户',
+  `create_user_ip` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '用户访问ip',
+  `create_user_client` varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '用户使用客户端',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+
 SET FOREIGN_KEY_CHECKS = 1;

@@ -26,4 +26,6 @@ public class URLConstant {
     public static final String RESOURCE_URL_01 = "queryResource";
     public static final String RESOURCE_URL_02 = "insertResource";
     public static final String RESOURCE_URL_03 = "deleteResource";
+
+    public static final String LOGACTION_URL_01 = "queryLogAction";
 }

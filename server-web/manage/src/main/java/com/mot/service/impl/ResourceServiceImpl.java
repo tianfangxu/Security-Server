@@ -55,6 +55,7 @@ public class ResourceServiceImpl implements ResourceService {
         }
         AuthUserModel currentUser = (AuthUserModel) authentication.getPrincipal();
         ResourceEntity resourceEntity = new ResourceEntity();
+        ModelUtils.clearModel(model);
         model.transferEntity(resourceEntity,currentUser.getId());
         int count = resourceMapper.insertResource(resourceEntity);
         return ResultBaseModel.getSuccess().setMessage("成功新增"+count+"条数据");

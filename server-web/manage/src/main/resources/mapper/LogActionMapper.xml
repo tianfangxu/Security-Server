@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mot.mapper.LogActionMapper">
+    <insert id="insertLog" parameterType="com.mot.entity.LogActionEntity">
+        insert into sy_log_action
+        (
+            server,
+            url,
+            request,
+            response,
+            create_time,
+            create_user_id,
+            create_user_name,
+            create_user_ip,
+            create_user_client
+        ) values (
+            #{entity.server},
+            #{entity.url},
+            #{entity.request},
+            #{entity.response},
+            #{entity.createTime},
+            #{entity.createUserId},
+            #{entity.createUserName},
+            #{entity.createUserIp},
+            #{entity.createUserClient}
+        )
+    </insert>
+
+    <select id="queryLogAction" resultType="com.mot.entity.LogActionEntity" parameterType="com.mot.model.ParamLogActionModel">
+        select * from sy_log_action where 1=1
+        <if test="model.server != null ">
+            and server = #{model.server}
+        </if>
+        <if test="model.url != null ">
+            and url = #{model.url}
+        </if>
+        <if test="model.createUserName != null ">
+            and create_user_name = #{model.createUserName}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+        limit ${model.page},${model.rows}
+    </select>
+
+    <select id="queryLogActionCount" resultType="java.lang.Integer" parameterType="com.mot.model.ParamLogActionModel">
+        select count(1) from sy_log_action where 1=1
+        <if test="model.server != null ">
+            and server = #{model.server}
+        </if>
+        <if test="model.url != null ">
+            and url = #{model.url}
+        </if>
+        <if test="model.createUserName != null ">
+            and create_user_name = #{model.createUserName}
+        </if>
+        <if test="model.startTime != null ">
+            and create_time >= #{model.startTime}
+        </if>
+        <if test="model.endTime != null ">
+            and #{model.endTime} >= create_time
+        </if>
+    </select>
+</mapper>
