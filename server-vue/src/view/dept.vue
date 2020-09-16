@@ -1,6 +1,6 @@
 <template>
 	<div style="color: red;font-size: 250px;">
-		大傻逼
+		功能暂未开放
 	</div>
 </template>
 

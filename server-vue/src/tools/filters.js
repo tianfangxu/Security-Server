@@ -6,5 +6,8 @@ export default {
 	},
 	stringToJson : v => {
 		return JSON.parse(v);
-	}
+	},
+	stringSubLenfth:v =>{
+		return v.length < 30?v:v.substring(0,30)+".....";
+	},
 }

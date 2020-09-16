@@ -35,7 +35,7 @@ new Vue({
   methods:{
   	islogin(){
   		if(this.$data.token == null || this.$data.token == ''){
-  			window.location.href="#/"
+  			window.location.href="#/login"
   		}
   	},
   	randomstr(){	//生产随机字符串
