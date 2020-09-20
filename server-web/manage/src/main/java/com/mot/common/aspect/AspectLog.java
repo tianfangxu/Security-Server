@@ -1,5 +1,8 @@
 package com.mot.common.aspect;
 
+import com.alibaba.fastjson.JSON;
+import com.mot.common.annotation.LogsWriteAnnotation;
+import com.mot.common.constant.URLConstant;
 import com.mot.config.properties.GlobalSettingConfig;
 import com.mot.model.AuthUserModel;
 import com.mot.model.ParamLogActionModel;
@@ -16,6 +19,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @Aspect
@@ -28,6 +34,8 @@ public class AspectLog {
     GlobalSettingConfig globalSettingConfig;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    List<String> list;
 
     @Pointcut("execution(public * com.mot.controller.*.*(..))")
     public void aspectLog(){}
@@ -48,20 +56,29 @@ public class AspectLog {
             logger.debug("访问路径："+requestURI);
             logger.debug("访问参数："+point.getArgs()[0]);
             logger.debug("访问返回值："+proceed);
-            ParamLogActionModel model = new ParamLogActionModel();
-            model.setServer(globalSettingConfig.serverName);
-            model.setUrl(requestURI);
-            model.setRequest(String.valueOf(point.getArgs()[0]));
-            model.setResponse(String.valueOf(proceed));
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication != null){
-                AuthUserModel currentUser = (AuthUserModel) authentication.getPrincipal();
-                model.setCreateUserName(currentUser.getRealName());
-                model.setCreateUserId(currentUser.getId());
+            if(LogsRsource(requestURI)){
+                ParamLogActionModel model = new ParamLogActionModel();
+                model.setServer(globalSettingConfig.serverName);
+                model.setUrl(requestURI);
+                String params = null;
+                params = (point.getArgs() != null && point.getArgs().length> 0) ?
+                            (params= JSON.toJSONString(point.getArgs()[0])).length() < 1000 ? params : params.substring(0,1000)
+                            :
+                            null;
+                model.setRequest(params);
+                String result = null;
+                model.setResponse((result=JSON.toJSONString(proceed)).length() < 1000 ? result : result.substring(0,1000));
+                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+                if (authentication != null){
+                    AuthUserModel currentUser = (AuthUserModel) authentication.getPrincipal();
+                    model.setCreateUserName(currentUser.getRealName());
+                    model.setCreateUserId(currentUser.getId());
+                }
+                model.setCreateUserIp(getIpAddress(request));
+                model.setCreateUserClient(request.getHeader("User-Agent"));
+                logActionService.insertLog(model);
             }
-            model.setCreateUserIp(getIpAddress(request));
-            model.setCreateUserClient(request.getHeader("User-Agent"));
-            logActionService.insertLog(model);
+
         }catch (RuntimeException e){e.printStackTrace();}
         return proceed;
     }
@@ -82,5 +99,30 @@ public class AspectLog {
         } else {
             return ip;
         }
+    }
+
+    /**
+     * 需要写入日志的接口
+     * @param url
+     * @return
+     */
+    public boolean LogsRsource(String url){
+        if (list == null){
+            list = new ArrayList<>();
+            Field[] fields = URLConstant.class.getFields();
+            for (Field field : fields) {
+                LogsWriteAnnotation annotation = field.getAnnotation(LogsWriteAnnotation.class);
+                if (annotation == null || !annotation.value()){
+                    field.setAccessible(true);
+                    try {
+                        Object o = field.get(null);
+                        list.add("/"+String.valueOf(o));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return list.contains(url);
     }
 }

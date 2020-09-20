@@ -1,5 +1,7 @@
 package com.mot.common.constant;
 
+import com.mot.common.annotation.LogsWriteAnnotation;
+
 public class URLConstant {
 
     public static final String LOGIN_URL_01 = "login";
@@ -27,5 +29,9 @@ public class URLConstant {
     public static final String RESOURCE_URL_02 = "insertResource";
     public static final String RESOURCE_URL_03 = "deleteResource";
 
+    /**
+     * @LogsWriteAnnotation 标注该注解表示该接口不需要写入访问日志到数据库
+     */
+    @LogsWriteAnnotation
     public static final String LOGACTION_URL_01 = "queryLogAction";
 }
