@@ -112,7 +112,7 @@ public class AspectLog {
             Field[] fields = URLConstant.class.getFields();
             for (Field field : fields) {
                 LogsWriteAnnotation annotation = field.getAnnotation(LogsWriteAnnotation.class);
-                if (annotation == null || !annotation.value()){
+                if (annotation != null && annotation.value()){
                     field.setAccessible(true);
                     try {
                         Object o = field.get(null);
