@@ -43,6 +43,7 @@
         <if test="model.endTime != null ">
             and #{model.endTime} >= create_time
         </if>
+        order by create_time desc
         limit ${model.page},${model.rows}
     </select>
 

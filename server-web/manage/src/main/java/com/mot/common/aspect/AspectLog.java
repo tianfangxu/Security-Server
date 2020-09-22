@@ -1,7 +1,7 @@
 package com.mot.common.aspect;
 
 import com.alibaba.fastjson.JSON;
-import com.mot.common.annotation.LogsWriteAnnotation;
+import com.mot.common.annotation.FiledUrlAnnotation;
 import com.mot.common.constant.URLConstant;
 import com.mot.config.properties.GlobalSettingConfig;
 import com.mot.model.AuthUserModel;
@@ -111,8 +111,8 @@ public class AspectLog {
             list = new ArrayList<>();
             Field[] fields = URLConstant.class.getFields();
             for (Field field : fields) {
-                LogsWriteAnnotation annotation = field.getAnnotation(LogsWriteAnnotation.class);
-                if (annotation != null && annotation.value()){
+                FiledUrlAnnotation annotation = field.getAnnotation(FiledUrlAnnotation.class);
+                if (annotation != null && annotation.writeLogs()){
                     field.setAccessible(true);
                     try {
                         Object o = field.get(null);

@@ -1,56 +1,61 @@
 package com.mot.common.constant;
 
-import com.mot.common.annotation.LogsWriteAnnotation;
+import com.mot.common.annotation.FiledUrlAnnotation;
 
+/**
+ * @Author tianfx
+ * @Date 2020/9/20
+ * 所有的访问接口都应该再这个类注明
+ */
 public class URLConstant {
 
     /**
      * @LogsWriteAnnotation 标注该注解表示该接口不需要写入访问日志到数据库
      */
 
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation(hasPermit = false)
     public static final String LOGIN_URL_01 = "login";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String LOGIN_URL_02 = "refreshToken";
 
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_01 = "queryUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_02 = "insertUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_03 = "updateUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_04 = "deleteUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_05 = "batchInsertUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_06 = "batchUpdateUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_07 = "batchDeleteUser";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String USER_URL_08 = "resetPassword";
 
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_01 = "queryRole";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_02 = "insertRole";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_03 = "queryRoleResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_04 = "batchInsertRoleResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_05 = "batchDeleteRoleResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_06 = "batchUpdateRoleResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String ROLE_URL_07 = "queryRoleByUserId";
 
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String RESOURCE_URL_01 = "queryResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String RESOURCE_URL_02 = "insertResource";
-    @LogsWriteAnnotation
+    @FiledUrlAnnotation
     public static final String RESOURCE_URL_03 = "deleteResource";
-
+    @FiledUrlAnnotation(writeLogs = false)
     public static final String LOGACTION_URL_01 = "queryLogAction";
 }

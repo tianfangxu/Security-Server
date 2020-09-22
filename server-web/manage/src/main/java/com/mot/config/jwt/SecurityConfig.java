@@ -1,5 +1,6 @@
 package com.mot.config.jwt;
 
+import com.mot.common.annotation.FiledUrlAnnotation;
 import com.mot.common.constant.URLConstant;
 import com.mot.config.properties.GlobalSettingConfig;
 import com.mot.filter.JwtAuthenticationTokenFilter;
@@ -20,6 +21,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @Configuration
@@ -55,7 +58,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private String[] getWhiteList() {
-        return new String[]{"/"+URLConstant.LOGIN_URL_01};
+        Field[] fields = URLConstant.class.getFields();
+        ArrayList<String> list = new ArrayList<>();
+        for (Field field : fields) {
+            FiledUrlAnnotation annotation = field.getAnnotation(FiledUrlAnnotation.class);
+            if (annotation != null && !annotation.hasPermit()){
+                field.setAccessible(true);
+                try {
+                    Object o = field.get(null);
+                    list.add("/"+String.valueOf(o));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return list.toArray(new String[list.size()]);
     }
 
     @Override
@@ -87,6 +104,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("123456"));
+
     }
 }
