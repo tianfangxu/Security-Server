@@ -2,6 +2,10 @@ package com.mot.common.constant;
 
 import com.mot.common.annotation.FiledUrlAnnotation;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Author tianfx
  * @Date 2020/9/20
@@ -58,4 +62,40 @@ public class URLConstant {
     public static final String RESOURCE_URL_03 = "deleteResource";
     @FiledUrlAnnotation(writeLogs = false)
     public static final String LOGACTION_URL_01 = "queryLogAction";
+
+
+
+    private static URLConstant instance = new URLConstant();
+    private List<String> list;
+    public static URLConstant getInstance(){
+        return instance != null ? instance : initBean();
+    }
+    private synchronized static URLConstant initBean() {
+        return instance != null ? instance : (instance= new URLConstant());
+    }
+
+    /**
+     * 获取所有的访问地址
+     * @return
+     */
+    public List<String> urlsAll(){
+        if (this.list == null){
+            this.list = new ArrayList<>();
+            Class<? extends URLConstant> clazz = this.getClass();
+            Field[] fields = clazz.getFields();
+            for (Field field : fields) {
+                FiledUrlAnnotation annotation = field.getAnnotation(FiledUrlAnnotation.class);
+                if (annotation != null){
+                    field.setAccessible(true);
+                    try {
+                        Object o = field.get(null);
+                        this.list.add("/"+String.valueOf(o));
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        return this.list;
+    }
 }

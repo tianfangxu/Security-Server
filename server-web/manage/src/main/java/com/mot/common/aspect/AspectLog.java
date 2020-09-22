@@ -8,7 +8,9 @@ import com.mot.model.AuthUserModel;
 import com.mot.model.ParamLogActionModel;
 import com.mot.service.LogActionService;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,20 +110,22 @@ public class AspectLog {
      */
     public boolean LogsRsource(String url){
         if (list == null){
-            list = new ArrayList<>();
-            Field[] fields = URLConstant.class.getFields();
+            this.list = new ArrayList<>();
+            Class<? extends URLConstant> clazz = URLConstant.class;
+            Field[] fields = clazz.getFields();
             for (Field field : fields) {
                 FiledUrlAnnotation annotation = field.getAnnotation(FiledUrlAnnotation.class);
                 if (annotation != null && annotation.writeLogs()){
                     field.setAccessible(true);
                     try {
                         Object o = field.get(null);
-                        list.add("/"+String.valueOf(o));
+                        this.list.add("/"+String.valueOf(o));
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();
                     }
                 }
             }
+
         }
         return list.contains(url);
     }
