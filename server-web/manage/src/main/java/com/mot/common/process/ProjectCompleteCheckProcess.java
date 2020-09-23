@@ -47,7 +47,7 @@ public class ProjectCompleteCheckProcess implements CommandLineRunner {
                     if (annotation!=null && annotation.value() !=null && annotation.value().length >0){
                         String url = annotation.value()[0];
                         if (!list.contains("/"+url)){
-                            logger.warn("控制层{}的路径{}需要注册到@URLConstant类中",s,url);
+                            logger.warn("[警告] 控制层{}的路径{}需要注册到#URLConstant类中,并使用@FiledUrlAnnotation添加相关权限！！！",s,url);
                         }
                     }
                 }
