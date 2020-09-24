@@ -2,24 +2,21 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+import router from './router.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-//import VueResource from 'vue-resource'
 import axios from 'axios'
-
-import common from './tools/filters';
+import StringFilter from './common/filter/StringFilter';
 
 //全局过滤器
-Object.keys(common).forEach(key => {
-		Vue.filter(key, common[key])
+Object.keys(StringFilter).forEach(key => {
+	Vue.filter(key, StringFilter[key])
 })
 
 
 Vue.use(ElementUI);
 Vue.prototype.$axios = axios
 axios.defaults.withCredentials = true
-//Vue.use(VueResource)
 Vue.config.productionTip = false
 
 new Vue({
