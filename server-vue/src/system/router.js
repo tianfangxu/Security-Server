@@ -1,3 +1,4 @@
+import urlconstant from '@/common/utils/urlconstant.js'
 import login from '@/system/login'
 import index from '@/system/index'
 import user from '@/system/user'
@@ -7,44 +8,45 @@ import dept from '@/system/dept'
 import home from '@/system/home'
 import logAction from '@/system/logAction'
 
+
 const routes = [
 	{
-	  path: '/login',
+	  path: urlconstant.base_local_url_login,
 	  name: 'login',
 	  component: login
 	},
 	{
-	  path: '/index',
-	  name: 'index',
+	  path: urlconstant.base_local_url_system,
+	  name: 'system',
 	  component: index,
 	  children:[
 	  	{
-	  		path:'/index/user',
+	  		path:urlconstant.base_local_url_system_user,
 	  		name:"user",
 	  		component: user,
 	  	},
 	  	{
-	  		path:'/index/dept',
+	  		path:urlconstant.base_local_url_system_dept,
 	  		name:"dept",
 	  		component: dept,
 	  	},
 	  	{
-	  		path:'/index/resource',
+	  		path:urlconstant.base_local_url_system_resource,
 	  		name:"resource",
 	  		component: resource,
 	  	},
 	  	{
-	  		path:'/index/role',
+	  		path:urlconstant.base_local_url_system_role,
 	  		name:"role",
 	  		component: role,
 	  	},
 	  	{
-	  		path:'/index/home',
+	  		path:urlconstant.base_local_url_system_home,
 	  		name:"home",
 	  		component: home,
 	  	},
 	  	{
-	  		path:'/index/logAction',
+	  		path:urlconstant.base_local_url_system_logAction,
 	  		name:"logAction",
 	  		component: logAction,
 	  	}

@@ -29,6 +29,8 @@
 </template>
 
 <script>
+	import urlconstant from '@/common/utils/urlconstant.js'
+	
 	export default{
 		data() {
 	      var isnull = (rule, value, callback) => {
@@ -75,7 +77,7 @@
 				          message: res.message,
 				          type: 'success'
 				    });
-				    window.location.href="#/index/home";
+				    window.location.href="#"+urlconstant.base_local_url_system_home;
 	        	}else{
 	        		loding.close();
 			        this.$message({

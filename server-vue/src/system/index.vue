@@ -17,7 +17,7 @@
 				      class="el-menu-vertical-demo"
 				      @open="handleOpen"
 				      @close="handleClose">
-				      	<el-menu-item @click='linkHref("#/index/home")'>
+				      	<el-menu-item  @click="linkHref('#')">
 				      		<i class="el-icon-s-home"></i>
 					        <span>首页</span>
 				      	</el-menu-item>
@@ -26,16 +26,16 @@
 					        	<i class="el-icon-setting"></i>
 					        	<span>系统管理</span>
 					        </template>
-					        <el-menu-item index="1-1" @click="linkHref('#/index/user')">
+					        <el-menu-item index="1-1" @click="linkHref('#"+urlconstant.base_local_url_system_user+"')">
 					        	<span>用户管理</span>
 					        </el-menu-item>
-					        <el-menu-item index="1-2" @click="linkHref('#/index/role')">
+					        <el-menu-item index="1-2" @click="linkHref('#"+urlconstant.base_local_url_system_role+"')">
 					        	<span>角色管理</span>
 					        </el-menu-item>
-					        <el-menu-item index="1-4" @click="linkHref('#/index/resource')">
+					        <el-menu-item index="1-4" @click="linkHref('#"+urlconstant.base_local_url_system_resource+"')">
 					        	<span>资源管理</span>
 					        </el-menu-item>
-					        <el-menu-item index="1-3" @click="linkHref('#/index/dept')">
+					        <el-menu-item index="1-3" @click="linkHref('#"+urlconstant.base_local_url_system_dept+"')">
 					        	<span>部门管理</span>
 					        </el-menu-item>
 				      	</el-submenu>
@@ -44,7 +44,7 @@
 					        	<i class="el-icon-menu"></i>
 					        	<span slot="title">日志管理</span>
 				        	</template>
-				        	<el-menu-item index="2-1" @click="linkHref('#/index/logAction')">
+				        	<el-menu-item index="2-1" @click="linkHref('#"+urlconstant.base_local_url_system_logAction+"')">
 					        	<span>操作日志</span>
 					        </el-menu-item>
 				      	</el-submenu>
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+	import urlconstant from '@/common/utils/urlconstant.js'
+	
 	export default {
 	  	name: 'index',
 	  	data(){
@@ -71,7 +73,7 @@
 	      linkHref(uri){window.location.href=uri;},
 	      logout(){
 	      	this.$root.token = "";
-	      	window.location.href="#/login";
+	      	window.location.href="#"+urlconstant.base_local_url_login;
 	      },
 	      getUserInfo(){
 	      	console.log(this.$root.info)
