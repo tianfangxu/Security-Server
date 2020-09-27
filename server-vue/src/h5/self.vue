@@ -1,12 +1,12 @@
 <template>
 	<div>
-		DA SHA DIAO
+		功能正在加速开发中
 	</div>
 </template>
 
 <script>
 	export default {
-	  	name: 'home',
+	  	name: 'self',
 	}
 </script>
 
