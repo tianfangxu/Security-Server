@@ -51,6 +51,9 @@
 </script>
 
 <style>
+	.el-main{
+		padding: 0px;
+	}
 	.el-footer{
 		position:fixed;
 		bottom:0px;
