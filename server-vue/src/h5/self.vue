@@ -1,13 +1,33 @@
 <template>
-	<div>
+	<div style="color: #E4E7ED;">
 		<div class="user-info-class">
+			<div style="text-align: right;margin-right: 10px;padding-top: 10px;color: white;"><i class="el-icon-setting"></i></div>
 			<!--'fill', 'contain', 'cover', 'none', 'scale-down'-->
-			<el-image class="header-class" :src="url" fit="cover"></el-image>
+			<el-image class="header-class" :src="userInfo.avatar" fit="cover"></el-image>
+			<div style="color: white;">{{userInfo.realName}}</div>
 		</div>
 		
+		<div style="height: 20px;"></div>
+		
 		<div class="user-item-class">
-			
+			<span>我的关注</span>
+			<div style="float: right;">
+				<i class="el-icon-arrow-right"></i>
+			</div>
 		</div>
+		<div class="user-item-class">
+			<span>我的粉丝</span>
+			<div style="float: right;">
+				<i class="el-icon-arrow-right"></i>
+			</div>
+		</div>
+		<div class="user-item-class">
+			<span>我的博客</span>
+			<div style="float: right;">
+				<i class="el-icon-arrow-right"></i>
+			</div>
+		</div>
+		
 	</div>
 </template>
 
@@ -16,7 +36,11 @@
 	  	name: 'self',
 	  	data(){
 	  		return{
-	  			url: '../../static/img/example/33.jpg'
+	  			userInfo:{
+	  				realName:'田方旭',
+	  				avatar:'../../static/img/example/33.jpg',
+	  				
+	  			},
 	  		}
 	  	}
 	}
@@ -26,15 +50,19 @@
 	.user-info-class{
 		text-align: center;
 		height: 200px;
-		background-color: #1E90FF;
+		background-color: dodgerblue;
 	}
 	.header-class{
 		width: 100px; 
 		height: 100px;
-		margin-top: 30px;
+		margin-top: 10px;
 		border-radius: 100%;
 	}
 	.user-item-class{
-		border-top: ;
+		font-size: 20px;
+		color: #303133;
+		padding-left: 15px;
+		border-bottom: 1px solid #EBEEF5;
+		padding: 18px 20px;
 	}
 </style>
