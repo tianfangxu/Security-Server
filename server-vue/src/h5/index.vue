@@ -113,6 +113,11 @@
 		text-align: center;
 		padding: 0px;
 	}
+	.el-tabs__header{
+		padding: 0;
+	    position: relative;
+	    margin: 0 0 0px;
+	}
 	.main-class{
 		padding: 0px;
 		height:auto!important;
@@ -123,7 +128,7 @@
 		border-top: 1px solid #EBEEF5;
 		padding-top: 5px;
 		background-color: #FFFFFF;
-		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 	.card-item-img-class{
 		padding-top: 5px;
