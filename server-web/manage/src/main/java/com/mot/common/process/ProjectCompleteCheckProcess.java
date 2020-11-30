@@ -27,6 +27,7 @@ public class ProjectCompleteCheckProcess implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //项目url校验
         fileUrlCheck();
     }
 

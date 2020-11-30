@@ -73,7 +73,6 @@ public class URLConstant {
     private synchronized static URLConstant initBean() {
         return instance != null ? instance : (instance= new URLConstant());
     }
-
     /**
      * 获取所有的访问地址
      * @return

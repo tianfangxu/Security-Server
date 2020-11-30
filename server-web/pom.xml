@@ -11,6 +11,8 @@
     <modules>
         <module>message</module>
         <module>manage</module>
+        <module>FileServer</module>
+        <module>common</module>
     </modules>
 
     <properties>

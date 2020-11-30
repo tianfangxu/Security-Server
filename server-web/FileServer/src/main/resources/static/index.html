@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>自定义视频播放器</title>
+    <style>
+        *{box-sizing: border-box}
+        .player{
+            width:970px;
+            height:670px;
+            margin:0 auto;
+            background-color: #222;
+            padding:10px;
+            -moz-user-select:none; /* Firefox私有属性 */
+            -webkit-user-select:none; /* WebKit内核私有属性 */
+            -ms-user-select:none; /* IE私有属性(IE10及以后) */
+            -khtml-user-select:none; /* KHTML内核私有属性 */
+            -o-user-select:none; /* Opera私有属性 */
+            user-select:none; /* CSS3属性 */
+        }
+        .show{
+            text-align: center;
+            height: 600px;
+            background: #333;
+            /*background:url('./public/images/loading.gif') center center;*/
+            background-size: contain;
+        }
+        video{
+            display: none;
+            width:auto;
+            max-width: 100%;
+        }
+
+        .controller{
+            color:#fff;
+            padding:15px 0;
+        }
+        .controller_tool{
+            float:left;
+            text-align: center;
+            cursor:pointer;
+        }
+        .player_btn{
+            width:50px;
+        }
+        .pull_btn{
+            float:right;
+            width:50px;
+        }
+        .progress{
+            height:6px;
+            border-radius: 2px;
+            margin-top:8px;
+        }
+        .total_progress{
+            width:650px;
+            background-color:#666;
+        }
+        .current_progress{
+            position:absolute;
+            width:0px;
+            background-color:yellowgreen;
+        }
+        .bar{
+            position:absolute;
+            width:650px;
+            z-index: 99;
+        }
+        .time_box{
+            margin-left:15px;
+            cursor:default;
+        }
+        .volume_box{
+            position:relative;
+            width:40px;
+            padding:0 10px;
+        }
+        .volume_proress_now {
+            border-radius: 4px;
+            top:-30px;
+            left:16px;
+            position:absolute;
+            width:6px;
+            height:30px;
+            background-color: yellowgreen;
+        }
+        .volume_proress{
+            border-radius: 4px;
+            top:-60px;
+            left:16px;
+            position:absolute;
+            width:6px;
+            height:60px;
+            background-color: #666;
+        }
+        .volume_proress_bar{
+            border-radius: 4px;
+            top:-60px;
+            left:16px;
+            position:absolute;
+            width:6px;
+            height:60px;
+        }
+        .volume_bar_box{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="player">
+        <div class="show">
+            <video id="my_video" height="100%" src="./test.mp4"></video>
+            <div class="loading"></div>
+        </div>
+        <div class="controller">
+            <div class="controller_tool player_btn"><i class="fa fa-play" aria-hidden="true"></i></div>
+            <div class="controller_tool player_progress">
+                <div class="progress bar"></div>
+                <div class="progress current_progress"></div>
+                <div class="progress total_progress"></div>
+            </div>
+            <div class="controller_tool time_box">
+                <span id="current_time">00:00:00</span>
+                /
+                <span id="total_time">00:00:00</span>
+            </div>
+            <div class="controller_tool volume_box">
+                <div class="volume_bar_box">
+                    <div class="volume_proress"></div>
+                    <div class="volume_proress_now"></div>
+                    <div class="volume_proress_bar"></div>
+                </div>
+                <i class="fa fa-volume-up" aria-hidden="true"></i>
+            </div>
+            <div class="controller_tool pull_btn"><i class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+        </div>
+    </div>
+</main>
+<script>
+    window.onload=function(){
+        var video = document.querySelector('#my_video');
+        //视频可以播放时，初始化控制面板上的数据
+        video.oncanplay=function(){
+            //默认为等待图标 显示视频内容
+            video.style.display='inline-block';
+            //设置默认音量
+            video.volume = 0.5;
+            //获取视频总时长
+            var total_time=formatTime(video.duration);
+            document.querySelector('#total_time').innerHTML=total_time;
+        };
+
+        //视频在播放过程中更改播放进度条
+        video.ontimeupdate = function(){
+            var current_time = video.currentTime;
+            var total_time = video.duration;
+            document.querySelector('#current_time').innerHTML=formatTime(current_time);
+            //进度百分比
+            var w=document.querySelector('.total_progress').clientWidth;
+            document.querySelector('.current_progress').style.width=(current_time/total_time)*w+'px';
+        }
+
+        //播放完毕的时候，把播放时间回到初始位置
+        video.onended = function(){
+            video.currentTime = 0;
+            document.querySelector('.player_btn i').classList.remove('fa-stop');
+            document.querySelector('.player_btn i').classList.add('fa-play');
+        }
+
+
+        //点击进度条进行跳播
+        document.querySelector('.bar').onclick=function(e){
+            //获取总长度
+            var w = this.clientWidth;
+            //获取鼠标偏移量
+            var c_w = e.offsetX;
+
+            //根据偏移量获取总时间的百分比
+            var now_time = video.duration * (c_w/w);
+            video.currentTime = now_time;
+
+        }
+
+        //控制音量组件显示/隐藏
+        document.querySelector('.fa-volume-up').onclick = function(e){
+            if(this.classList.contains('active')){
+                this.classList.remove('active');
+                document.querySelector('.volume_bar_box').style.display='none';
+            }else{
+                this.classList.add('active');
+                document.querySelector('.volume_bar_box').style.display='block';
+            }
+
+            //阻止冒泡事件
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        //收起音量设置控制条
+        document.onclick = function(){
+            document.querySelector('.fa-volume-up').classList.remove('active');
+            document.querySelector('.volume_bar_box').style.display='none';
+        }
+
+        //设置音量大小
+        document.querySelector('.volume_proress_bar').onclick = function(e){
+            var h = this.clientHeight;
+            var c_h=h-e.offsetY;
+            //设置音量
+            video.volume = c_h/h;
+            //设置对应的音量高度
+            document.querySelector('.volume_proress_now').style.height=c_h+'px';
+            document.querySelector('.volume_proress_now').style.top=-c_h+'px';
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        // 点击播放时
+        document.querySelector('.player_btn').onclick=function(){
+            if(video.paused){
+                video.play();
+                document.querySelector('.player_btn i').classList.remove('fa-play');
+                document.querySelector('.player_btn i').classList.add('fa-stop');
+            }else{
+                video.pause();
+                document.querySelector('.player_btn i').classList.remove('fa-stop');
+                document.querySelector('.player_btn i').classList.add('fa-play');
+            }
+        }
+
+        //全屏切换
+        document.querySelector('.pull_btn').onclick=function(){
+            var player=document.querySelector('.player');
+            var flag = document.fullscreenElement || document.webkitFullscreenElement ||document.mozFullScreenElement ||document.msFullscreenElement ||document.oFullscreenElement;
+
+            if(flag){//全屏状态
+                //兼容性问题
+                if(document.cancelFullScreen){
+                    document.cancelFullScreen();
+                }else if(document.webkitCancelFullScreen){//chome
+                    document.webkitCancelFullScreen();
+                }else if(document.mozCancelFullScreen){//fox
+                    document.mozCancelFullScreen();
+                }else if(document.msCancelFullScreen){//ie
+                    document.msCancelFullScreen();
+                }else if(document.oCancelFullScreen){//opera
+                    document.oCancelFullScreen();
+                }
+
+                //窗口大小设置
+                document.querySelector('.show').style.height=600+'px';
+                document.querySelector('.total_progress').style.width=650+'px';
+
+                //切换图标
+                document.querySelector('.pull_btn i').classList.remove('fa-compress');
+                document.querySelector('.pull_btn i').classList.add('fa-arrows-alt');
+            }else{
+                //兼容性问题
+                if(player.requestFullScreen){
+                    player.requestFullscreen();
+                }else if(player.webkitRequestFullScreen){//chome
+                    player.webkitRequestFullScreen();
+                }else if(player.mozRequestFullScreen){//fox
+                    player.mozRequestFullScreen();
+                }else if(player.msRequestFullScreen){//ie
+                    player.msRequestFullScreen();
+                }else if(player.oRequestFullScreen){//opera
+                    player.oRequestFullScreen();
+                }
+                //窗口大小设置
+                document.querySelector('.show').style.height=window.outerHeight-40+'px';
+                document.querySelector('.total_progress').style.width=window.innerWidth-350+'px';
+                //切换图标
+                document.querySelector('.pull_btn i').classList.remove('fa-arrows-alt');
+                document.querySelector('.pull_btn i').classList.add('fa-compress');
+            }
+        }
+
+        //解决esc或h5全屏自带的退出无法恢复原大小问题
+        window.onresize=function() {
+            var flag = document.fullscreenElement || document.webkitFullscreenElement ||document.mozFullScreenElement ||document.msFullscreenElement ||document.oFullscreenElement;
+            if (!flag) {
+                //窗口大小设置
+                document.querySelector('.show').style.height=600+'px';
+                document.querySelector('.total_progress').style.width=650+'px';
+
+                //切换图标
+                document.querySelector('.pull_btn i').classList.remove('fa-compress');
+                document.querySelector('.pull_btn i').classList.add('fa-arrows-alt');
+            }
+        }
+    }
+
+
+
+    //时间格式化 参数-秒
+    function formatTime(time){
+        if(typeof(time)!=="number"){
+            return '00:00:00';
+        }
+
+        //获取hour
+        var hour=parseInt(time/(60*60));
+        hour = hour<10?'0'+hour:hour;
+
+        //获取分钟
+        var minute=parseInt(time%(60*60)/60);
+        minute = minute<10?'0'+minute:minute;
+
+        //获取秒钟
+        var second=Math.ceil(time%60);
+        second = second<10?'0'+second:second;
+
+        return `${hour}:${minute}:${second}`;
+    }
+</script>
+</body>
+</html>
+

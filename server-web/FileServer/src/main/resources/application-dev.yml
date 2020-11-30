@@ -1,0 +1,7 @@
+server:
+  port: 32002
+
+logging:
+  level:
+    root: info
+  config: classpath:logback.xml
