@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.locks.LockSupport;
 
 /**
- * 限制方法运行时常的工具类，需要提供执行的方法（实现Runnable接口）和 终止的方法（Task接口）
+ * 限制方法运行时常的工具类，需要提供执行的方法（实现Runnable接口）和 终止的方法（StopHolder接口）
  * @author tianfx
  * @date 2021/5/18 4:51
  */
@@ -25,13 +25,20 @@ public class RunTimeoutUtil implements Runnable {
         instance.thread = new Thread(instance);
         instance.thread.setDaemon(true);
         instance.thread.setName("RUN-TIMEOUT-THREAD");
-        instance.list = new ArrayList<>();
+        instance.list = Collections.synchronizedList(new ArrayList<>());
         instance.thread.start();
     }
 
-    public static void run(Runnable runnable, Task task, Long timeout) {
+    /**
+     * @author: tianfx
+     * @date: 2021/5/21 2:01 下午
+     * @param runnable: 被监听的任务函数
+     * @param stopHolder: 任务停止函数
+     * @param timeout:  执行任务的超时时间
+     */
+    public static void excutor(Runnable runnable, StopHolder stopHolder, Long timeout) {
         //add listener
-        instance.listener(task, timeout);
+        instance.listener(stopHolder, timeout);
         try {
             //excutor method
             runnable.run();
@@ -64,11 +71,11 @@ public class RunTimeoutUtil implements Runnable {
         }
     }
 
-    private void listener(Task task, Long timeout) {
+    private void listener(StopHolder stopHolder, Long timeout) {
         Node node = new Node();
         node.timeout = timeout + System.currentTimeMillis();
         node.thread = Thread.currentThread();
-        node.task = task;
+        node.stopHolder = stopHolder;
         if (current == null) {
             // no task is running
             this.current = node;
@@ -111,7 +118,7 @@ public class RunTimeoutUtil implements Runnable {
             }
             if (flag) {
                 //excutor stop , next task started
-                current.task.stop();
+                current.stopHolder.stop();
                 list.remove(0);
                 if (list.size() > 0) {
                     current = list.get(0);
@@ -127,7 +134,7 @@ public class RunTimeoutUtil implements Runnable {
     class Node {
         Thread thread;
         Long timeout;
-        Task task;
+        StopHolder stopHolder;
     }
 
 }
