@@ -1,4 +1,4 @@
-package com.mot.service.impl;
+package com.mot.service;
 
 import com.mot.service.ReceiverService;
 import org.springframework.context.annotation.Lazy;

@@ -1,4 +1,4 @@
-package com.mot.service.impl;
+package com.mot.service;
 
 import com.mot.common.utils.UIDUtils;
 import com.mot.model.MessageModel;

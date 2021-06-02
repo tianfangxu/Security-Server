@@ -28,54 +28,61 @@
 			</div>
 			<div class="message-contant-ietm-class">
 				<div style="padding-top: 0px;">
-					<i style="color: #1E90FF;" class="el-icon-thumb"></i>
+					<i style="color: #1E90FF;" class="el-icon-star-on"></i>
 					我的点赞
 					<div style="float: right;"><i class="el-icon-arrow-right"></i></div>
 				</div>
 			</div>
-			
+			<div class="message-contant-ietm-class">
+				<div style="padding-top: 0px;">
+					<i style="color: #1E90FF;" class="el-icon-s-custom"></i>
+					我的群组
+					<div style="float: right;"><i class="el-icon-arrow-right"></i></div>
+				</div>
+			</div>
+
+
 			<!--从这里开始事聊天会话-->
-			<div class="message-contant-ietm-class">
-				<div style="padding-top: 0px;">
-					<el-avatar shape="square" size="small" src="../../static/img/example/55.jpg" style="vertical-align: middle;"></el-avatar>
-					<span class="card-item-header-user-name-class">张三</span>
+			<div v-for="users in userList" class="message-contant-ietm-class">
+				<div style="padding-top: 0px;" @click="goSession">
+					<el-avatar shape="square" size="small" :src="users.avatar" style="vertical-align: middle;"></el-avatar>
+					<span class="card-item-header-user-name-class">{{users.userName}}</span>
 					<div style="float: right;font-size: 12px;padding-top: 10px;padding-right: 20px;">
-						2020-09-27
+						{{users.lastTime}}
 					</div>
 				</div>
 			</div>
-			<div class="message-contant-ietm-class">
-				<div style="padding-top: 0px;">
-					<el-avatar shape="square" size="small" src="../../static/img/example/33.jpg" style="vertical-align: middle;"></el-avatar>
-					<span class="card-item-header-user-name-class">田方旭</span>
-					<div style="float: right;font-size: 12px;padding-top: 10px;padding-right: 20px;">
-						2020-08-11
-					</div>
-				</div>
-			</div>
-			
-			<div class="message-contant-ietm-class">
-				<div style="padding-top: 0px;">
-					<el-avatar shape="square" size="small" src="../../static/img/example/22.jpg" style="vertical-align: middle;"></el-avatar>
-					<span class="card-item-header-user-name-class">李四</span>
-					<div style="float: right;font-size: 12px;padding-top: 10px;padding-right: 20px;">
-						2020-08-17
-					</div>
-				</div>
-			</div>
-			
+
 		</div>
 	</div>
 </template>
 
 <script>
+	import urlconstant from '@/common/utils/urlconstant.js'
 	export default {
 	  	name: 'message',
 	  	data(){
 	  		return{
 	  			searchName:'',
+				userList:[
+					{
+						avatar:"../../static/img/example/55.jpg",
+						userName:"聊天室",
+						lastTime:"2020-09-27"
+					}
+				]
 	  		}
-	  	}
+	  	},
+		methods:{
+			goSession(){
+				window.location.href = '#'+urlconstant.h5_lcoal_url_home_session;
+			}
+		},
+    created() {
+      if(this.$root.token == null || this.$root.token == ''){
+        window.location.href = '#/loginWeb';
+      }
+    }
 	}
 </script>
 
@@ -98,7 +105,7 @@
 		border-top: 1px solid #EBEEF5;
 		padding: 5px 5px 5px 15px;
 		font-size: 18px;
-		
-		
+
+
 	}
 </style>

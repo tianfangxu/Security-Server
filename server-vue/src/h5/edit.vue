@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<div style="padding-top: 10px;padding-right: 10px;">
-			<el-input 
-				v-model="headertext" 
-				type="textarea" 
-				:autosize="{ minRows: 2, maxRows: 6}" 
-				class="edit-header-class" 
+			<el-input
+				v-model="headertext"
+				type="textarea"
+				:autosize="{ minRows: 2, maxRows: 6}"
+				class="edit-header-class"
 				placeholder="输入标题"
 				maxlength="100"
   				show-word-limit>
@@ -19,28 +19,28 @@
 				<el-input
 				  type="textarea"
 				  placeholder="正文内容"
-				  :autosize="{ minRows: 5, maxRows: 999}" 
+				  :autosize="{ minRows: 5, maxRows: 999}"
 				  class='edit-content-class'>
 				</el-input>
 				<div style="float: right;margin-top: -36px;position: sticky;font-size: 24px;">
-					<el-upload 
+					<el-upload
 						:show-file-list="false"
-						action="https://jsonplaceholder.typicode.com/posts/" 
+						action="https://jsonplaceholder.typicode.com/posts/"
 						:on-success="handleAvatarSuccess"
 						:before-upload="beforeAvatarUpload"
 						>
 						<i class="el-icon-picture-outline" style="color: #1E90FF;"></i>
 					</el-upload>
 				</div>
-				
+
 				<div style="padding-left: 10px;" v-for="j in imgsNumber[i]" :key="j">
 					<el-divider v-if='j == 1'><div style="color: #909399;">插入图片</div></el-divider>
 					<el-image style="width: 100%;" :src="imgsList[j+imgsNumber[i-1]-1]" fit="cover" ></el-image>
 					<el-divider v-if='j == imgsNumber[i]'><div style="color: #909399;">插入正文</div></el-divider>
 				</div>
-				
+
 			</div>
-			
+
 		</div>
 	</div>
 </template>
@@ -66,22 +66,27 @@
 				imgs.push(URL.createObjectURL(file.raw));
 			},
 			beforeAvatarUpload(){
-				
+
 			},
 			handlePictureCardPreview(file) {
 		        this.dialogImageUrl = file.url;
 		        this.dialogVisible = true;
 		    }
-		}
-	}
+		},
+    created() {
+	  	  if(this.$root.token == null || this.$root.token == ''){
+          window.location.href = '#/loginWeb';
+        }
+    }
+  }
 </script>
 
 <style scoped="scoped">
 	.edit-header-class{
 		width: 100%;
 		font-size: 20px;
-		border: 0;  
-        outline: none; 
+		border: 0;
+        outline: none;
         background-color: rgba(0, 0, 0, 0);
         padding: 5px 5px 5px 5px;
 	}

@@ -7,7 +7,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://127.0.0.1:3306/server?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password:
+    password: 123456
   redis:
 #sentinel:
     ##      nodes: 127.0.0.1:26379,127.0.0.1:26389,127.0.0.1:26399
@@ -31,3 +31,8 @@ mybatis:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+
+logging:
+  level:
+    root: info
+  config: classpath:logback.xml

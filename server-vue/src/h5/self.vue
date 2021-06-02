@@ -6,9 +6,9 @@
 			<el-image class="header-class" :src="userInfo.avatar" fit="cover"></el-image>
 			<div style="color: white;">{{userInfo.realName}}</div>
 		</div>
-		
+
 		<div style="height: 20px;"></div>
-		
+
 		<div class="user-item-class">
 			<span>我的关注</span>
 			<div style="float: right;">
@@ -27,7 +27,7 @@
 				<i class="el-icon-arrow-right"></i>
 			</div>
 		</div>
-		
+
 	</div>
 </template>
 
@@ -37,13 +37,22 @@
 	  	data(){
 	  		return{
 	  			userInfo:{
-	  				realName:'田方旭',
+	  				realName:'',
 	  				avatar:'../../static/img/example/33.jpg',
-	  				
+
 	  			},
 	  		}
-	  	}
-	}
+	  	},
+    methods:{
+
+    },
+    created() {
+      if(this.$root.token == null || this.$root.token == ''){
+        window.location.href = '#/loginWeb';
+      }
+      this.userInfo.realName = this.$root.info.realName;
+    }
+  }
 </script>
 
 <style>
@@ -53,7 +62,7 @@
 		background-color: dodgerblue;
 	}
 	.header-class{
-		width: 100px; 
+		width: 100px;
 		height: 100px;
 		margin-top: 10px;
 		border-radius: 100%;

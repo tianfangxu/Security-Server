@@ -2,6 +2,8 @@ package com.mot;
 
 import com.mot.handler.WebsocketMessageHandler;
 import com.mot.config.properties.NettyConfig;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -88,7 +90,6 @@ public class NettyBootRuner implements CommandLineRunner {
                      * 从IOC中获取到Handler
                      */
                     pipeline.addLast(applicationContext.getBean(WebsocketMessageHandler.class));
-
                 }
             });
             Channel channel = serverBootstrap.bind().sync().channel();

@@ -25,7 +25,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   data:{
-  	baseUrl:"http://localhost:32001/",
+  	baseUrl:"http://139.196.51.214:32001/",
+    baseWebsocket:'ws://139.196.51.214:31002/channel',
   	token:'',
   	info:{}
   },

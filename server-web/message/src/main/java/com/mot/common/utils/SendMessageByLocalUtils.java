@@ -1,7 +1,8 @@
 package com.mot.common.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.mot.model.MessageModel;
-import com.mot.service.impl.ReceiverByLocalService;
+import com.mot.service.ReceiverByLocalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class SendMessageByLocalUtils implements SendMessageInterface {
 
     @Override
     public boolean send(MessageModel model) {
-        receiverByLocalService.handleMessage(model.getBody());
+        receiverByLocalService.handleMessage(JSON.toJSONString(model));
         return true;
     }
 }

@@ -1,5 +1,6 @@
 package com.mot.common.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.mot.common.constant.RedisConstant;
 import com.mot.model.MessageModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class SendMessageByRedisUtils implements SendMessageInterface {
 
     @Override
     public boolean send(MessageModel model) {
-        redisTemplate.convertAndSend(RedisConstant.redisChannelName,model.getBody());
+        redisTemplate.convertAndSend(RedisConstant.redisChannelName, JSON.toJSONString(model));
         return false;
     }
 }

@@ -24,7 +24,6 @@ public class ArithmeticUtil {
      * @return
      */
     public static String subtract(String a,String b){
-
         return new BigDecimal(a).subtract(new BigDecimal(b)).toString();
     }
 

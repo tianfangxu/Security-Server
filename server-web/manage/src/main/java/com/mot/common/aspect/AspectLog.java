@@ -56,7 +56,7 @@ public class AspectLog {
             HttpServletRequest request = attributes.getRequest();
             String requestURI = request.getRequestURI();
             logger.debug("访问路径："+requestURI);
-            logger.debug("访问参数："+point.getArgs()[0]);
+            logger.debug("访问参数："+point.getArgs());
             logger.debug("访问返回值："+proceed);
             if(LogsRsource(requestURI)){
                 ParamLogActionModel model = new ParamLogActionModel();

@@ -63,6 +63,16 @@ public class URLConstant {
     @FiledUrlAnnotation(writeLogs = false)
     public static final String LOGACTION_URL_01 = "queryLogAction";
 
+    /**
+     * test
+     */
+    @FiledUrlAnnotation(hasPermit = false,writeLogs = false)
+    public static final String DEMO_URL_01 = "demoUpdate";
+
+    @FiledUrlAnnotation(hasPermit = false,writeLogs = false)
+    public static final String DEMO_URL_02 = "demoSelect";
+    @FiledUrlAnnotation(hasPermit = false,writeLogs = false)
+    public static final String DEMO_URL_03 = "demoInitbinder";
 
 
     private static URLConstant instance = new URLConstant();

@@ -5,7 +5,7 @@
 				<router-view/>
 			</el-main>
 			<el-footer>
-				<el-menu router @select="handleSelect" mode="horizontal"  :default-active="home_url.index" active-text-color="dodgerblue">
+				<el-menu router @select="handleSelect" mode="horizontal" active-text-color="dodgerblue">
 					<el-menu-item :index="home_url.index" style='width: 25%'>
 						<i class="el-icon-s-home"></i>
 					</el-menu-item>
@@ -41,11 +41,11 @@
 		},
 		methods: {
 	      	handleSelect(index, item) {
-	        	
+
 	      	}
 	    },
 	    created(){
-	    	window.location.href = '#'+this.home_url.index;
+	    	//window.location.href = '#'+this.home_url.index;
 	    }
 	}
 </script>

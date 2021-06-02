@@ -4,4 +4,5 @@ public class URLConstant {
 
     public static final String FILE_URL_01 = "upload";
     public static final String FILE_URL_02 = "download";
+    public static final String FILE_URL_03 = "downloadStaticHtml";
 }

@@ -1,4 +1,4 @@
-package com.mot.service.impl;
+package com.mot.service;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

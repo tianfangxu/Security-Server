@@ -2,7 +2,7 @@ package com.mot.filter;
 
 import com.mot.common.utils.JwtTokenUtil;
 import com.mot.config.properties.GlobalSettingConfig;
-import com.mot.service.impl.AuthDetailsUserService;
+import com.mot.service.AuthDetailsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

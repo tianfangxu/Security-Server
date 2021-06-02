@@ -20,7 +20,7 @@
 			    	<div style="margin-top: 40px;margin-bottom: 40px;color: firebrick;">
 			    		注册暂时未开放，请联系管理员（田方旭vx：tianfangxu1993）
 			    	</div>
-			    	
+
 			    </el-tab-pane>
 			</el-tabs>
 		</div>
@@ -30,7 +30,7 @@
 
 <script>
 	import urlconstant from '@/common/utils/urlconstant.js'
-	
+
 	export default{
 		data() {
 	      var isnull = (rule, value, callback) => {
@@ -64,8 +64,8 @@
 	        var loding = this.$loading({ fullscreen: true });
 	        this.$axios.post(this.$root.baseUrl+"login",this.loginform,{
 	        	headers:{
-					'Content-Type': 'application/json'
-				}
+              'Content-Type': 'application/json'
+            }
 	        }).then((res) => {
 	        	res = res.data;
 	        	console.log(res)
@@ -92,7 +92,7 @@
 			          type: 'error'
 			    });
 	        })
-	        
+
 	      }
 	    }
 	}
@@ -101,7 +101,7 @@
 <style scoped>
 	.login{
 		background-color: lightblue;
-		background-image: url(../../static/img/backg.png);
+		/*background-image: url(../../static/img/backg.png);*/
 		height: 700px;
 		padding-top: 10%;
 	}

@@ -1,8 +1,9 @@
 package com.mot.common.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.mot.common.constant.RabbitMqConstant;
 import com.mot.model.MessageModel;
-import com.mot.service.impl.ReceiverByRabbitService;
+import com.mot.service.ReceiverByRabbitService;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -26,7 +27,7 @@ public class SendMessageByMQUtils implements SendMessageInterface {
     public boolean send(MessageModel model) {
         rabbitTemplate.convertAndSend(RabbitMqConstant.exchangeName,
                 RabbitMqConstant.routerKey,
-                model.getBody());
+                JSON.toJSONString(model));
         return true;
     }
 }

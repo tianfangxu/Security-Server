@@ -1,4 +1,4 @@
-package com.mot.service.impl;
+package com.mot.service;
 
 import com.mot.model.AuthUserModel;
 import org.springframework.security.core.Authentication;

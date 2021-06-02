@@ -4,13 +4,14 @@ import com.mot.common.annotation.FiledUrlAnnotation;
 import com.mot.common.constant.URLConstant;
 import com.mot.config.properties.GlobalSettingConfig;
 import com.mot.filter.JwtAuthenticationTokenFilter;
-import com.mot.service.impl.AuthDetailsUserService;
+import com.mot.service.AuthDetailsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -72,12 +73,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 }
             }
         }
+        list.add("*.html");
+        list.add("*.js");
+        list.add("*.css");
+        list.add("*.woff");
+        list.add("*.png");
         return list.toArray(new String[list.size()]);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(authDetailsUserService).passwordEncoder(passwordEncoder());
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        //解决静态资源被拦截的问题
+        web.ignoring().antMatchers("/login/**");
+        web.ignoring().antMatchers("/static/**");
+        web.ignoring().antMatchers("/index.html");
     }
 
     @Bean

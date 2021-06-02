@@ -1,4 +1,4 @@
-package com.mot.service.impl;
+package com.mot.service;
 
 import com.mot.factory.send.SendMessageObjectFactory;
 import com.mot.model.MessageModel;
@@ -14,7 +14,6 @@ public class SendToTextService implements MessageService {
 
     @Override
     public void excutor(MessageModel model) {
-        System.out.println("调用了发送本文消息接口");
         sendMessageObjectFactory.getInstance().send(model);
     }
 }

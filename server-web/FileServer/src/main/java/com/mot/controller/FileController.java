@@ -29,4 +29,10 @@ public class FileController {
         fileService.download(request,response);
     }
 
+    @RequestMapping(value = URLConstant.FILE_URL_03,method = RequestMethod.GET)
+    public ResultBaseModel downloadStaticHtml(HttpServletRequest request, HttpServletResponse response){
+        //fileService.downloadStaticHtml(request,response);
+        return new ResultBaseModel().setResult("23");
+    }
+
 }

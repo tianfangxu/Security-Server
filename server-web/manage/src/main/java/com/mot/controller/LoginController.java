@@ -4,7 +4,7 @@ import com.mot.common.constant.URLConstant;
 import com.mot.model.ParamLoginModel;
 import com.mot.model.ParamRefreshTokenModel;
 import com.mot.model.ResultBaseModel;
-import com.mot.service.impl.LoginUserService;
+import com.mot.service.LoginUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

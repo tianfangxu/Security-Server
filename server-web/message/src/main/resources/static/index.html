@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>群聊</title>
 </head>
 <body>
     <div id="msg">
@@ -24,9 +24,9 @@
             let param1 = {"type":"login","body":"hello-login"};
             let param2 = {"type":"text","body":"hello-textMessage"};
             let param3 = {"type":"image","body":"hello-image"};
-            websocket.send(JSON.stringify(param1));
+            //websocket.send(JSON.stringify(param1));
             websocket.send(JSON.stringify(param2));
-            websocket.send(JSON.stringify(param3));
+            //websocket.send(JSON.stringify(param3));
         }
         websocket.onerror = e => {
             console.log('链接异常:', e);
