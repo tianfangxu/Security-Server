@@ -21,7 +21,7 @@ public class JwtTokenUtil {
      * @param username 用户
      * @return 令token牌
      */
-    public String generateToken(String username) {
+    public static String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>(3);
         claims.put("sub", username);
         claims.put("created", System.currentTimeMillis()+expiration);
@@ -34,7 +34,7 @@ public class JwtTokenUtil {
      * @param token 令牌
      * @return 用户名
      */
-    public String getUsernameFromToken(String token) {
+    public static String getUsernameFromToken(String token) {
         Map claims = getClaimsFromToken(token);
         return claims == null?null:String.valueOf(claims.get("sub"));
     }
@@ -45,7 +45,7 @@ public class JwtTokenUtil {
      * @param token 原令牌
      * @return 新令牌
      */
-    public String refreshToken(String token) {
+    public static String refreshToken(String token) {
         String refreshedToken= null;
         Map claims = getClaimsFromToken(token);
         if (claims != null){
@@ -62,7 +62,7 @@ public class JwtTokenUtil {
      * @param username     用户
      * @return 是否有效
      */
-    public Boolean validateToken(String token, String username){
+    public static Boolean validateToken(String token, String username){
         String src = getUsernameFromToken(token);
         return (src!=null && src.equals(username));
     }
@@ -74,7 +74,7 @@ public class JwtTokenUtil {
      * @param claims 数据声明
      * @return 令牌
      */
-    private String generateToken(Map<String, Object> claims){
+    private static String generateToken(Map<String, Object> claims){
         String str = claims.toString();
         String signin = MD5Util.getMD5(str);
         claims.put("signin",signin);
@@ -87,7 +87,7 @@ public class JwtTokenUtil {
      * @param token 令牌
      * @return 数据声明
      */
-    private Map getClaimsFromToken(String token) {
+    private static Map getClaimsFromToken(String token) {
         String decode = DESede.decode(secret, token);
         Map crs = JSON.parseObject(decode, Map.class);
         String signin = String.valueOf(crs.get("signin"));

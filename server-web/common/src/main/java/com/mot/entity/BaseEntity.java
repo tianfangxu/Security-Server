@@ -1,12 +1,10 @@
 package com.mot.entity;
 
 import com.mot.constant.CommonConstants;
-import lombok.Data;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Data
 public class BaseEntity implements Serializable {
 
     private Timestamp createTime;
@@ -14,6 +12,46 @@ public class BaseEntity implements Serializable {
     private Timestamp updateTime;
     private String updateUser;
     private String delflag;
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public String getDelflag() {
+        return delflag;
+    }
+
+    public void setDelflag(String delflag) {
+        this.delflag = delflag;
+    }
 
     public BaseEntity createEntity(String createUser){
         this.setCreateTime(new Timestamp(System.currentTimeMillis()));

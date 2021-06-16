@@ -22,9 +22,12 @@
         websocket.onopen = () => {
             console.log(`链接建立...`);
             let param1 = {"type":"login","body":"hello-login"};
-            let param2 = {"type":"text","body":"hello-textMessage"};
+            let param2 = {"type":1,"body":"hello-textMessage","fromId":"1",sessionId:"TALKANYONE"};
             let param3 = {"type":"image","body":"hello-image"};
             //websocket.send(JSON.stringify(param1));
+            websocket.send(JSON.stringify(param2));
+            websocket.send(JSON.stringify(param2));
+            websocket.send(JSON.stringify(param2));
             websocket.send(JSON.stringify(param2));
             //websocket.send(JSON.stringify(param3));
         }

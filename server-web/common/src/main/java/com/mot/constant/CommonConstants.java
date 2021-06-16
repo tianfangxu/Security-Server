@@ -123,6 +123,8 @@ public class CommonConstants {
 
     /** 分割符号[ \t ] */
     public static final String SEPARATOR_T = "\t";
+    /** 分隔符  */
+    public static final String SEPARATOR_B = "\u001B";
 
     /** 行分割符号[ mac: \r ] */
     public static final String SEPARATOR_R = "\r";

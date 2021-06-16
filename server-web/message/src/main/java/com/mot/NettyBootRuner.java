@@ -1,9 +1,7 @@
 package com.mot;
 
-import com.mot.handler.WebsocketMessageHandler;
+import com.mot.handler.channel.WebsocketMessageHandler;
 import com.mot.config.properties.NettyConfig;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,7 +10,6 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -36,6 +33,9 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.codec.http.websocketx.extensions.compression.WebSocketServerCompressionHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
+/**
+ * @author tianfangxu
+ */
 @Component
 public class NettyBootRuner implements CommandLineRunner {
 
