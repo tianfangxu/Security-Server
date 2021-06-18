@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReceiverMessageBeat implements ReceiverMessageHolder{
 
-    private static String PING = "0";
+    private static String PING = "a";
 
     @Override
     public Boolean receiverMessage(ChannelHandlerContext ctx, WebSocketFrame msg) {

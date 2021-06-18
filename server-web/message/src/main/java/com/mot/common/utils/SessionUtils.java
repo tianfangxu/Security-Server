@@ -16,21 +16,29 @@ import java.util.Map;
  */
 public class SessionUtils {
 
-    static Map<String, ChannelHandlerContext> sessions = new HashMap();
+    static Map<String, SessionInfo> sessions = new HashMap();
     static Map<ChannelHandlerContext, Integer> heartBeat = new HashMap();
+
+    public static Map<String, SessionInfo> getSessions() {
+        return sessions;
+    }
+
+    public static Map<ChannelHandlerContext, Integer> getHeartBeat() {
+        return heartBeat;
+    }
 
     private static Integer maxCount = 5;
 
-    public static void add(String sessionId,ChannelHandlerContext channel){
-        ChannelHandlerContext oldchannel = sessions.put(sessionId, channel);
-        if (oldchannel != null && channel != oldchannel){
-            oldchannel.close();
+    public static void add(String sessionId,String fromName,ChannelHandlerContext channel){
+        SessionInfo oldchannel = sessions.put(sessionId, new SessionInfo(channel,fromName));
+        if (oldchannel != null && channel != oldchannel.channelHandlerContext){
+            oldchannel.channelHandlerContext.close();
         }
         heartBeat.remove(channel);
     }
 
-    public static ChannelHandlerContext getSession(String sessionId){
-        ChannelHandlerContext channel = sessions.get(sessionId);
+    public static SessionInfo getSession(String sessionId){
+        SessionInfo channel = sessions.get(sessionId);
         if (channel == null || heartBeat.get(channel) >= maxCount) {
             heartBeat.remove(channel);
             return null;
@@ -38,7 +46,7 @@ public class SessionUtils {
         return channel;
     }
 
-    public static Map<String, ChannelHandlerContext> getAllSession(){
+    public static Map<String, SessionInfo> getAllSession(){
         return sessions;
     }
 
@@ -57,20 +65,31 @@ public class SessionUtils {
             heartBeat.remove(channel);
             String fromId = null;
             for (String k : sessions.keySet()) {
-                if (sessions.get(k) == channel){
+                if (sessions.get(k).channelHandlerContext == channel){
                     sessions.remove(k);
                     fromId = k;
                     break;
                 }
             }
+            String fromName = getSession(fromId).fromName;
             MessageModel model = new MessageModel();
             model.setTime(CommonUtil.getCurrentDate());
             model.setFrom("system");
             model.setFromId("system");
             model.setType(SessionTypeEnums.系统通知.code);
-            model.setBody("["+fromId+"]已离线！");
+            model.setBody("<div style='color: #ff3262;font-size: 8px;text-align: center'>系统通知["+fromName+"]已离线！</div>");
             SpringContextHolder.getApplicationContext().getBean(MessageHandlerChatroom.class).handle(model);
             channel.close();
+        }
+    }
+
+    public static class SessionInfo{
+        public ChannelHandlerContext channelHandlerContext;
+        public String fromName;
+
+        public SessionInfo(ChannelHandlerContext channelHandlerContext, String fromName) {
+            this.channelHandlerContext = channelHandlerContext;
+            this.fromName = fromName;
         }
     }
 }

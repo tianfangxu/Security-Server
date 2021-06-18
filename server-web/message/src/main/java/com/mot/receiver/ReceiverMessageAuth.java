@@ -19,24 +19,21 @@ public class ReceiverMessageAuth implements ReceiverMessageHolder{
 
     @Override
     public Boolean receiverMessage(ChannelHandlerContext ctx, WebSocketFrame msg) {
-        if (SessionUtils.getAllSession().containsValue(ctx)) {
-            return true;
+        for (String s : SessionUtils.getAllSession().keySet()) {
+            SessionUtils.SessionInfo v = SessionUtils.getAllSession().get(s);
+            if (v.channelHandlerContext == ctx) {
+                return true;
+            }
         }
-        if (msg instanceof TextWebSocketFrame){
+        if(msg instanceof TextWebSocketFrame){
             MessageModel model = JSON.parseObject(((TextWebSocketFrame) msg).text(), MessageModel.class);
             String sessionId = model.getSessionId();
             if (sessionId == null || sessionId.length() == 0) {
                 return false;
             }
-            SessionUtils.add(model.getFromId(), ctx);
-            return true;
-//            try {
-//                return JwtTokenUtil.validateToken(sessionId,model.getForm());
-//            }catch (Exception e){
-//                e.printStackTrace();
-//                return false;
-//            }
+            SessionUtils.add(model.getFromId(),model.getFrom(), ctx);
+            return false;
         }
-        return false;
+        return true;
     }
 }

@@ -1,17 +1,15 @@
 server:
   port: 31001
 spring:
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/server?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
   redis:
-    sentinel:
-      nodes: 127.0.0.1:26379,127.0.0.1:26389,127.0.0.1:26399
-      master: mymaster
     database: 0
-    password: pass1234
+    password:
     timeout: 10000ms
     jedis:
       pool:
@@ -19,5 +17,6 @@ spring:
         max-active: 50
         max-idle: 50
         min-idle: 1
+    host: 127.0.0.1
 
 

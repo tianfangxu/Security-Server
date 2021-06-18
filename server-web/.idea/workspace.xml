@@ -5,119 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac9d7f61-297d-420c-b584-b2804a22dddf" name="Default Changelist" comment="工具类">
-      <change afterPath="$PROJECT_DIR$/../.idea/Security-Server.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server-vue/src/h5/login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/server-web.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SessionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/common/utils/urlconstant.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/common/utils/urlconstant.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/h5/edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/h5/edit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/h5/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/h5/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/h5/message.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/h5/message.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/h5/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/h5/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/h5/self.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/h5/self.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server-vue/src/system/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../server-vue/src/system/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/controller/DemoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/DemoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/DemoService1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/task/DemoTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/controller/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/job/ChannelJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/arrow-right-bold.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/refresh.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/arrow-right-bold.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/picture.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/refresh.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/ApplicationRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/ApplicationRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/common/constant/URLConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/common/constant/URLConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/controller/FileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/service/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/java/com/mot/service/FileServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileServer/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FileServer/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mot/utils/ArithmeticUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mot/utils/ArithmeticUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/src/main/java/com/mot/utils/Snowflake.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/com/mot/utils/Snowflake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/aspect/AspectLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/aspect/AspectLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/constant/URLConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/constant/URLConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/utils/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/common/utils/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/config/jwt/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/config/jwt/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/filter/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/filter/JwtAuthenticationTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/AuthDetailsUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/AuthDetailsUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/LogActionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/LogActionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/LoginUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/LoginUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/ResourceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/ResourceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/UserPermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/UserPermissionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/resources/application-pro.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/resources/application-pro.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/resources/config/globalSetting.properties" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/resources/config/globalSetting.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/application-pro.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/application-pro.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/ApplicationRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/ApplicationRun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/common/aspect/AspectLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/common/aspect/AspectLog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/common/constant/URLConstant.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/common/constant/URLConstant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/JwtTokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/JwtTokenUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/ModelUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/ModelUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/common/utils/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/config/jwt/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/config/jwt/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/config/redis/RedisConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/config/redis/RedisConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/ResourceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/ResourceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/RoleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/RoleController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/BaseEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/DeptEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/DeptEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/ResourceEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/ResourceEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/RoleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/RoleEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/RoleResourceEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/RoleResourceEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/UserEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/UserRoleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/entity/UserRoleEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/filter/JwtAuthenticationTokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/filter/JwtAuthenticationTokenFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/ResourceMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/ResourceMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/RoleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/RoleMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/UserMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/UserRoleMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/mapper/UserRoleMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/AuthResourceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/AuthResourceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/AuthUserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/AuthUserModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamLoginModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamLoginModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRefreshTokenModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRefreshTokenModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamResourceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamResourceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRoleModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRoleModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRoleResourceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamRoleResourceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamUserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ParamUserModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultBaseModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultBaseModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultResourceInfoModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultResourceInfoModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultResourceModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultResourceModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultRoleInfoModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultRoleInfoModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultUserInfoModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultUserInfoModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultUserModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/model/ResultUserModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/ResourceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/service/ResourceService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/RoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/service/RoleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/com/mot/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/AuthDetailsUserService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/LoginUserService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/ResourceServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/RoleServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/UserPermissionService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/config/globalSetting.properties" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/config/globalSetting.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/mapper/ResourceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/manage/target/classes/mapper/ResourceMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/NettyBootRuner.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/NettyBootRuner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByLocalUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByLocalUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByMQUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByMQUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByRedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SendMessageByRedisUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/config/redis/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/config/redis/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/WebsocketMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/WebsocketMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/ReceiverByLocalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/ReceiverByLocalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/ReceiverByRabbitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/ReceiverByRabbitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/ReceiverByRedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/ReceiverByRedisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/SendToImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/SendToImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/SendToLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/SendToLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/service/impl/SendToTextService.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/service/SendToTextService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/message/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/ApplicationRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/ApplicationRun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/enums/ReceiverMessageEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/enums/ReceiverMessageEnums.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SessionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/channel/WebsocketMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/channel/WebsocketMessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/message/MessageHandlerChatroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/message/MessageHandlerChatroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/resources/config/spring-netty-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/config/spring-netty-config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/message/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.sql" beforeDir="false" afterPath="$PROJECT_DIR$/server.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -274,14 +192,14 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1600150583077" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/manage/src/main/resources/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/message/src/main/resources/static/svg" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.40229884" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReactorSettings">
@@ -289,10 +207,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/message/src/main/resources/static/svg" />
+      <recent name="$PROJECT_DIR$/message/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/manage/src/main/resources/static" />
       <recent name="$PROJECT_DIR$/common/src/main/java/com/mot/utils" />
       <recent name="$PROJECT_DIR$/manage/src/test/resources" />
-      <recent name="$PROJECT_DIR$/manage/target/test-classes" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -307,7 +226,33 @@
       <command value="mvn package" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ApplicationRun (1)">
+  <component name="RunManager" selected="Spring Boot.ApplicationRun">
+    <configuration name="ChineseName" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mot.common.utils.ChineseName" />
+      <module name="message" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mot.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommonConstants" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mot.constant.CommonConstants" />
+      <module name="common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mot.constant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mot.controller.DemoController" />
       <module name="manage" />
@@ -334,61 +279,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JwtTokenUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.mot.common.utils.JwtTokenUtil" />
-      <module name="manage" />
+    <configuration name="MessageModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mot.model.MessageModel" />
+      <module name="message" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.mot.common.utils.*" />
+          <option name="PATTERN" value="com.mot.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="manage" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mot.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.mot.service" />
-      <option name="MAIN_CLASS_NAME" value="com.mot.service.DemoTest" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ApplicationRun (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="manage" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mot.ApplicationRun" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ApplicationRun (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="FileServer" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mot.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.mot.ApplicationRun" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -403,11 +308,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ChineseName" />
+        <item itemvalue="Application.MessageModel" />
+        <item itemvalue="Application.CommonConstants" />
         <item itemvalue="Application.DemoController" />
         <item itemvalue="Application.DemoTask" />
-        <item itemvalue="Application.JwtTokenUtil" />
-        <item itemvalue="Spring Boot.ApplicationRun (2)" />
-        <item itemvalue="JUnit.DemoTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -467,6 +372,21 @@
       <workItem from="1622534992562" duration="6237000" />
       <workItem from="1622598460814" duration="1861000" />
       <workItem from="1622613918100" duration="3790000" />
+      <workItem from="1622619141168" duration="166000" />
+      <workItem from="1622629188427" duration="921000" />
+      <workItem from="1622703735489" duration="10335000" />
+      <workItem from="1623049854379" duration="1825000" />
+      <workItem from="1623116509970" duration="14053000" />
+      <workItem from="1623141555090" duration="1799000" />
+      <workItem from="1623204512197" duration="13392000" />
+      <workItem from="1623725488156" duration="2733000" />
+      <workItem from="1623733728565" duration="25400000" />
+      <workItem from="1623826101760" duration="5875000" />
+      <workItem from="1623894448649" duration="17000" />
+      <workItem from="1623895021204" duration="15428000" />
+      <workItem from="1623921226865" duration="5025000" />
+      <workItem from="1623979514525" duration="4706000" />
+      <workItem from="1623984407279" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="工具类">
       <created>1621576293523</created>
@@ -489,7 +409,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621582798357</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="xxl static_resource">
+      <created>1622619287336</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1622619287336</updated>
+    </task>
+    <task id="LOCAL-00005" summary="设计">
+      <created>1623808602603</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1623808602603</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -550,7 +484,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="工具类" />
-    <option name="LAST_COMMIT_MESSAGE" value="工具类" />
+    <MESSAGE value="xxl static_resource" />
+    <MESSAGE value="设计" />
+    <option name="LAST_COMMIT_MESSAGE" value="设计" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

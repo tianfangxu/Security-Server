@@ -29,8 +29,16 @@ public class WebsocketMessageHandler extends SimpleChannelInboundHandler<WebSock
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt instanceof IdleStateEvent && ((IdleStateEvent)evt).state().equals(IdleState.ALL_IDLE)){
-            SessionUtils.addHeartBeatCount(ctx);
+        if (evt instanceof IdleStateEvent ){
+            IdleStateEvent event = (IdleStateEvent)evt;
+            switch (event.state()){
+                case ALL_IDLE:
+                    //心跳检测
+                    SessionUtils.addHeartBeatCount(ctx);
+                    break;
+                default:
+                    // do nothing
+            }
         }else {
             super.userEventTriggered(ctx,evt);
         }

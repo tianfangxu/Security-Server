@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 public class MessageHandlerChatroom implements MessageHandlerHolder{
     @Override
     public void handle(MessageModel model) {
-        TextWebSocketFrame frame = new TextWebSocketFrame(JSON.toJSONString(model));
-        SessionUtils.getAllSession().forEach((k,y)->y.writeAndFlush(frame));
+        SessionUtils.getAllSession().forEach((k,v)->v.channelHandlerContext.writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(model))));
     }
 }

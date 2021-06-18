@@ -2,39 +2,267 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>群聊</title>
+    <title></title>
 </head>
-<body>
-    <div id="msg">
+<style>
+    .main{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1000px;
+        height: 600px;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
 
+    }
+    .main-left{
+        width: 300px;
+        height: 600px;
+        float: left;
+        background-color: #e2e1e1;
+    }
+    .main-right{
+        width: 700px;
+        height: 600px;
+        float: left;
+    }
+    .main-right-top{
+        width: 700px;
+        height: 59px;
+        border-top: 1px solid #ebf0f1;
+        border-right: 1px solid #ebf0f1;
+        background-color: #f8f8f8;
+    }
+    .main-right-mid{
+        width: 700px;
+        height: 398px;
+        overflow-y: auto;
+        border-top: 1px solid #ebf0f1;
+        border-right: 1px solid #ebf0f1;
+    }
+    .main-right-bottom{
+        width: 700px;
+        height: 140px;
+        border-top: 1px solid #ebf0f1;
+        border-right: 1px solid #ebf0f1;
+        border-bottom: 1px solid #ebf0f1;
+    }
+    .main-right-bottom-tools{
+        width: 700px;
+        height: 30px;
+        background-color: #f8f8f8;
+    }
+    .main-right-bottom-tools-picture{
+        padding-left: 10px;
+        padding-top: 7px;
+        width: 25px;
+    }
+    .main-right-bottom-input{
+        border-top: 1px solid #ebf0f1;
+        width: 700px;
+        height: 79px;
+    }
+    .main-right-bottom-submit{
+        width: 700px;
+        height: 30px;
+    }
+    .main-right-bottom-input-textarea{
+        border: none;
+        width: 685px;
+        height: 65px;
+        outline: 0;
+        resize: none;
+        padding: 5px;
+    }
+    .main-right-bottom-submit-button{
+        height: 20px;
+        width: 80px;
+        margin-left: 550px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 8px;
+        font-weight: 200;
+        color: aliceblue;
+        background-color: #3f87c3;
+    }
+    .main-left-header{
+        text-align: center;
+        height:30px;
+        border-bottom: 1px solid #fcfbfb;
+    }
+    .main-left-list-item{
+        width: 100%;
+        height: 40px;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: #5d3030;
+        border-bottom: 1px solid #fcfbfb;
+        font-weight: 300;
+        font-size: 16px;
+        padding-top: 7px;
+
+    }
+</style>
+<body>
+    <div class="main" id="msg">
+        <div class="main-left">
+            <div class="main-left-header">
+                <div style="float: left;width:170px;margin-left: 50px"><input style="text-align: center" id="in" disabled ></div>
+                <div style="float: left"><img style="margin-top: 5px" onclick="changeName()" src="./svg/refresh.svg"></div>
+            </div>
+            <div class="main-left-list">
+                <div class="main-left-list-item">
+                    聊天室
+                    <div style="float: right;margin-top: 3px;margin-right: 10px">
+                        <img src="./svg/arrow-right-bold.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-right">
+            <div class="main-right-top"></div>
+            <div class="main-right-mid" id="msgs"></div>
+            <div class="main-right-bottom">
+                <div class="main-right-bottom-tools">
+                    <div class="main-right-bottom-tools-picture" onclick="selectPicture()"><img src="./svg/picture.svg" /></div>
+                </div>
+                <div class="main-right-bottom-input">
+                    <textarea class="main-right-bottom-input-textarea" id="out"></textarea>
+                </div>
+                <div class="main-right-bottom-submit">
+                    <div class="main-right-bottom-submit-button" onclick="send()">sned</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript">
+    let websocket;
+    let webUserId = new Date().getTime()+""+parseInt(Math.random()*100);
     (function(){
-        const websocket = new WebSocket('ws://localhost:31002/channel');
+        bindMyEvent();
+        randomName(initWeb);
+    })();
+
+    function initWeb(){
+        websocket = new WebSocket('ws://localhost:31002/channel');
         websocket.onmessage = e => {
-            console.log('收到消息:', e.data);
+            const  data = JSON.parse(e.data);
+            let h = document.getElementById("msgs").innerHTML;
+            if (data.fromId == webUserId) {
+                h+= "<div style='color: #9f275b'>";
+            }else{
+                h+= "<div>";
+            }
+            if (data.from != 'system'){
+                h+="<p style='font-size: 14px'>"+data.from+"<label style='font-size: 8px;margin-left: 10px'>"+data.time+"</label></p>";
+            }
+            h+="<div style='font-size: 12px;margin-left: 20px'>"+data.body+"</div>";
+            h+="</div>";
+            document.getElementById("msgs").innerHTML = h;
+            //滚动条到最底部
+            document.getElementById("msgs").scrollTop = document.getElementById("msgs").scrollHeight;
         }
         websocket.onclose = e => {
             let {code, reason} = e;
             console.log(`链接断开:code=${code}, reason=${reason}`);
+            let name = document.getElementById("in").value;
+            let msg = "<div style='color: #e9ad77;font-size: 8px;text-align: center'>系统通知：[ "+name+" ]离开了</div>";
+            let param2 = {type:1,body:msg,fromId:webUserId,from:"system"};
+            websocket.send(JSON.stringify(param2));
         }
         websocket.onopen = () => {
             console.log(`链接建立...`);
-            let param1 = {"type":"login","body":"hello-login"};
-            let param2 = {"type":1,"body":"hello-textMessage","fromId":"1",sessionId:"TALKANYONE"};
-            let param3 = {"type":"image","body":"hello-image"};
-            //websocket.send(JSON.stringify(param1));
+
+            let param2 = {type:1,body:"",fromId:webUserId,from:document.getElementById("in").value,sessionId:"1"};
             websocket.send(JSON.stringify(param2));
+
+            let name = document.getElementById("in").value;
+            let msg = "<div style='color: #e9ad77;font-size: 8px;text-align: center'>系统通知：[ "+name+" ]加入了</div>";
+            param2 = {type:1,body:msg,fromId:webUserId,from:"system"};
             websocket.send(JSON.stringify(param2));
-            websocket.send(JSON.stringify(param2));
-            websocket.send(JSON.stringify(param2));
-            //websocket.send(JSON.stringify(param3));
         }
         websocket.onerror = e => {
             console.log('链接异常:', e);
         }
-    })();
+        setInterval(function (){
+            //心跳设置
+            websocket.send('a');
+        },5000);
+    }
+
+    function send(){
+        let param2 = {type:1,body:document.getElementById("out").value,fromId:webUserId,from:document.getElementById("in").value};
+        websocket.send(JSON.stringify(param2));
+        document.getElementById("out").value = "";
+    }
+
+    var tempFileSelect;
+    function selectPicture(){
+        if (tempFileSelect == null){
+            tempFileSelect = document.createElement("input");
+            tempFileSelect.type = 'file';
+            tempFileSelect.onchange = function (){
+                var files = tempFileSelect.files;
+                if (files.length == 1){
+                    var file = files[0];
+                    if (!/image\/\w+/.test(file.type)) {
+                        alert("只能选择图片");
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.addEventListener("load", function () {
+                        var cons = "<img style='max-width: 400px' src='"+reader.result+"' />";
+                        let param2 = {type:1,body:cons,fromId:webUserId,from:document.getElementById("in").value};
+                        websocket.send(JSON.stringify(param2));
+                    }, false);
+                    reader.readAsDataURL(file);
+                }
+                tempFileSelect.parentNode.removeChild(tempFileSelect);
+            };
+        }
+        tempFileSelect.click();
+    }
+
+    function randomName(callback){
+        //步骤一:创建异步对象
+        var ajax = new XMLHttpRequest();
+        //步骤二:设置请求的url参数,参数一是请求的类型,参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+        ajax.open('get','/common/randomName');
+        //步骤三:发送请求
+        ajax.send();
+        //步骤四:注册事件 onreadystatechange 状态改变就会调用
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                //步骤五 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+                document.getElementById("in").value = ajax.responseText;
+                callback();
+            }
+        }
+    }
+
+    function changeName(){
+        randomName(function (){
+            let name = document.getElementById("in").value;
+            let msg = "<div style='color: #e9ad77;font-size: 8px;text-align: center'>系统通知：[ "+name+" ]加入了</div>";
+            let param2 = {type:1,body:msg,fromId:webUserId,from:"system"};
+            websocket.send(JSON.stringify(param2));
+        });
+    }
+
+    function bindMyEvent(){
+        var focus = document.getElementById("out");
+        focus.onkeypress=function(event){
+            console.log(event);
+            if(event.which === 13) {
+                //点击回车要执行的事件
+                send();
+            }
+        }
+    }
 
 </script>
 </html>

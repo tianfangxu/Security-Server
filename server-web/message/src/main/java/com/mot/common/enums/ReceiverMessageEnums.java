@@ -10,8 +10,8 @@ import com.mot.receiver.ReceiverMessageHolder;
  * @date 2021/6/9 10:47 上午
  */
 public enum ReceiverMessageEnums {
-    鉴权(0, ReceiverMessageAuth.class),
-    心跳(1, ReceiverMessageBeat.class),
+    鉴权(1, ReceiverMessageAuth.class),
+    心跳(0, ReceiverMessageBeat.class),
     文本(9999,ReceiverMessageContentText .class);
 
     public int code;
