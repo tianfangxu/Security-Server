@@ -5,34 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ac9d7f61-297d-420c-b584-b2804a22dddf" name="Default Changelist" comment="工具类">
-      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/controller/DemoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/DemoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/service/DemoService1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage/src/main/java/com/mot/task/DemoTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/controller/CommonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/job/ChannelJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/arrow-right-bold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/refresh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/arrow-right-bold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/picture.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/message/src/main/resources/static/svg/refresh.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/AuthDetailsUserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/LoginUserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/ResourceServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/RoleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/UserPermissionService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/target/classes/com/mot/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/message/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/ApplicationRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/ApplicationRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/enums/ReceiverMessageEnums.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/enums/ReceiverMessageEnums.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SessionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/common/utils/SessionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/channel/WebsocketMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/channel/WebsocketMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/message/MessageHandlerChatroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/handler/message/MessageHandlerChatroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageAuth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/receiver/ReceiverMessageBeat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/message/src/main/resources/config/spring-netty-config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/config/spring-netty-config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/message/src/main/java/com/mot/job/ChannelJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/java/com/mot/job/ChannelJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/message/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/message/src/main/resources/static/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -386,7 +361,8 @@
       <workItem from="1623895021204" duration="15428000" />
       <workItem from="1623921226865" duration="5025000" />
       <workItem from="1623979514525" duration="4706000" />
-      <workItem from="1623984407279" duration="19000" />
+      <workItem from="1623984407279" duration="106000" />
+      <workItem from="1623986395362" duration="2147000" />
     </task>
     <task id="LOCAL-00001" summary="工具类">
       <created>1621576293523</created>
@@ -423,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623808602603</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="html+destroy">
+      <created>1623984456341</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1623984456341</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -486,7 +469,8 @@
     <MESSAGE value="工具类" />
     <MESSAGE value="xxl static_resource" />
     <MESSAGE value="设计" />
-    <option name="LAST_COMMIT_MESSAGE" value="设计" />
+    <MESSAGE value="html+destroy" />
+    <option name="LAST_COMMIT_MESSAGE" value="html+destroy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

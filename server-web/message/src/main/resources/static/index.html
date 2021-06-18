@@ -123,7 +123,9 @@
             </div>
         </div>
         <div class="main-right">
-            <div class="main-right-top"></div>
+            <div class="main-right-top">
+                <div style="margin-left: 20px;font-size: 12px;color: darkgreen;margin-top: 23px">在线人数：<label id="onlines">1</label></div>
+            </div>
             <div class="main-right-mid" id="msgs"></div>
             <div class="main-right-bottom">
                 <div class="main-right-bottom-tools">
@@ -145,10 +147,12 @@
     (function(){
         bindMyEvent();
         randomName(initWeb);
+        //在线
+        getonline();
     })();
 
     function initWeb(){
-        websocket = new WebSocket('ws://localhost:31002/channel');
+        websocket = new WebSocket('ws://139.196.51.214:31002/channel');
         websocket.onmessage = e => {
             const  data = JSON.parse(e.data);
             let h = document.getElementById("msgs").innerHTML;
@@ -165,6 +169,14 @@
             document.getElementById("msgs").innerHTML = h;
             //滚动条到最底部
             document.getElementById("msgs").scrollTop = document.getElementById("msgs").scrollHeight;
+            //在线人数修改
+            if (data.from == 'system' ){
+                if (data.body.indexOf("加入了")>-1){
+                    document.getElementById("onlines").innerText = parseInt(document.getElementById("onlines").innerText)+1;
+                }else if(data.body.indexOf("已离线")>-1){
+                    document.getElementById("onlines").innerText = parseInt(document.getElementById("onlines").innerText)-1;
+                }
+            }
         }
         websocket.onclose = e => {
             let {code, reason} = e;
@@ -184,14 +196,30 @@
             let msg = "<div style='color: #e9ad77;font-size: 8px;text-align: center'>系统通知：[ "+name+" ]加入了</div>";
             param2 = {type:1,body:msg,fromId:webUserId,from:"system"};
             websocket.send(JSON.stringify(param2));
+
         }
         websocket.onerror = e => {
             console.log('链接异常:', e);
         }
+
         setInterval(function (){
             //心跳设置
             websocket.send('a');
+            //在线人数
+            getonline();
         },5000);
+    }
+
+    function getonline(){
+        var ajax = new XMLHttpRequest();
+        ajax.open('get','/common/onlineCount');
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                var onlines = JSON.parse(ajax.responseText);
+                document.getElementById("onlines").innerText = onlines.length;
+            }
+        }
+        ajax.send();
     }
 
     function send(){

@@ -18,7 +18,7 @@ import java.util.Map;
 @Component
 public class ChannelJob {
 
-    @Scheduled(cron = "0/30 * * * * ?")
+    @Scheduled(cron = "0/5 * * * * ?")
     public void SessionTimer(){
         Map<String, SessionUtils.SessionInfo> allSession = SessionUtils.getAllSession();
         for (String k : allSession.keySet()) {
