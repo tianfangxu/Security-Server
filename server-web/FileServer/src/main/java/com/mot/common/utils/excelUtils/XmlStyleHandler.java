@@ -14,8 +14,9 @@ import java.util.List;
 public class XmlStyleHandler extends DefaultHandler implements Handler {
     
     List<Font> fonts;
-    List<Font> cellXfs;
+    List<Style> cellXfs;
     Font current;
+    Style cstyle;
     boolean isFonts = false;
     boolean isXf = false;
 
@@ -40,7 +41,12 @@ public class XmlStyleHandler extends DefaultHandler implements Handler {
         
         if (isXf){
             if (qName.endsWith("xf")) {
-                cellXfs.add(fonts.get(Integer.parseInt(attributes.getValue("fontId"))));
+                cstyle = new Style();
+                cstyle.font = fonts.get(Integer.parseInt(attributes.getValue("fontId")));
+                cellXfs.add(cstyle);
+            }else if (qName.endsWith("alignment")){
+                String horizontal = attributes.getValue("horizontal");
+                cstyle.setHorizontal(horizontal);
             }
         }
         
@@ -89,7 +95,7 @@ public class XmlStyleHandler extends DefaultHandler implements Handler {
         super.characters(ch, start, length);
     }
     
-    public Font getCellXfs(int i){
+    public Style getCellXfs(int i){
         return cellXfs.get(i);
     }
 }

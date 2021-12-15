@@ -69,22 +69,28 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public void excelView(MultipartFile file,HttpServletResponse response) {
-        File n = new File("/tmp/" + file.getName());
-        String viewPath = "/Users/tianfangxu/Downloads/";
         try {
-            n.createNewFile();
-            file.transferTo(n);
-            String body = ZipUtils.unzip(n);
-            String html = "<!DOCTYPE html>\n" +
-                    "<html lang=\"en\">\n" +
-                    "<head>\n" +
-                    "    <meta charset=\"UTF-8\">\n" +
-                    "    <title>Title</title>\n" +
-                    "</head>\n" +
-                    "<body>"+body+"</body>\n" +
-                    "</html>";
+            String html = "";
+            if (file == null || !(file.getOriginalFilename().endsWith(".xlsx") || file.getOriginalFilename().endsWith(".XLSX"))){
+                html = "ERROR: Only Support Excel Documents Of 2007 And Above.";
+            }else{
+                File n = new File("/tmp/" + file.getName());
+                n.createNewFile();
+                file.transferTo(n);
+                String body = ZipUtils.unzip(n);
+                html = "<!DOCTYPE html>\n" +
+                        "<html lang=\"en\">\n" +
+                        "<head>\n" +
+                        "    <meta charset=\"UTF-8\">\n" +
+                        "    <title>Title</title>\n" +
+                        "</head>\n" +
+                        "<body>"+body+"</body>\n" +
+                        "</html>";
+                n.delete();
+            }
+            
             ServletOutputStream outputStream = response.getOutputStream();
-            outputStream.write(html.getBytes(StandardCharsets.UTF_8));
+            outputStream.write(html.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {

@@ -92,8 +92,24 @@ public class TableUtils {
                         }
                     }
                     
-                    if (c.getF() != null){
-                        builder.append(" style=\"font-size: "+c.getF().getSize()+"px;font-family:"+c.getF().getName()+";color: "+c.getF().getColor()+" \" ");
+                    if (c.getS() != null){
+                        Font font = c.getS().font;
+                        builder.append(" style=\"");
+                        if (font != null){
+                            builder.append("font-size: "+font.getSize()+"px;");
+                            if (font.getName() != null){
+                                builder.append(";font-family:"+font.getName());
+                            }
+                            if (font.getColor() != null){
+                                builder.append(";color: "+font.getColor());
+                            } 
+                        }
+                        String horizontal = c.getS().horizontal;
+
+                        if (horizontal != null){
+                            builder.append(";text-align: "+horizontal);
+                        }
+                        builder.append("\"");
                     }
                     builder.append(">");
                     builder.append(c.v);
@@ -104,7 +120,6 @@ public class TableUtils {
         }
         builder.append("</table>");
         String s = builder.toString();
-        System.out.println(s);
         return s;
     }
 }

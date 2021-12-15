@@ -46,7 +46,7 @@ public class Table {
         String v;
         int colspan;
         int rowspan;
-        Font f;
+        Style s;
 
         public C(String v) {
             this.v = v;
@@ -85,12 +85,12 @@ public class Table {
             return this;
         }
 
-        public Font getF() {
-            return f;
+        public Style getS() {
+            return s;
         }
 
-        public C setF(Font f) {
-            this.f = f;
+        public C setS(Style s) {
+            this.s = s;
             return this;
         }
     }

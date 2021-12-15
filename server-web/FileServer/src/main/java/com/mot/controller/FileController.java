@@ -49,17 +49,6 @@ public class FileController {
     public void excelView(MultipartFile file,HttpServletResponse response){
         fileService.excelView(file, response);
     }
-    @RequestMapping(value = URLConstant.FILE_URL_05,method = RequestMethod.GET)
-    public void excelView(String path,HttpServletResponse response) throws IOException {
-        String s = globalSettingConfig.rootFilePath + "/" + path + ".html";
-        ServletOutputStream outputStream = response.getOutputStream();
-        FileInputStream fileInputStream = new FileInputStream(new File(s));
-        byte[] b = new byte[8096];
-        while (fileInputStream.read(b) > 0) {
-            outputStream.write(b);
-        }
-        fileInputStream.close();
-        outputStream.close();
-    }
+
 
 }

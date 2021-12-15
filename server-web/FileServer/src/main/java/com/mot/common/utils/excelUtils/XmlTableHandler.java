@@ -23,7 +23,7 @@ public class XmlTableHandler extends DefaultHandler implements Handler {
     boolean hasRef = true;
     boolean inlineStr = false;
     String obj = "";
-    Font cellXfs;
+    Style cellXfs;
     Table table;
 
     @Override
@@ -87,7 +87,7 @@ public class XmlTableHandler extends DefaultHandler implements Handler {
         }else if (qName.endsWith("c")){
             if (inlineStr){
                 table.add(rowIndex-1,colIndex-1, obj);
-                table.tables.get(rowIndex-1).get(colIndex-1).setF(cellXfs);
+                table.tables.get(rowIndex-1).get(colIndex-1).setS(cellXfs);
                 obj = "";
             }
             inlineStr = false;
@@ -108,12 +108,12 @@ public class XmlTableHandler extends DefaultHandler implements Handler {
                 } catch (NumberFormatException e) {
                     table.add(rowIndex-1,colIndex-1, value);
                 }
-                table.tables.get(rowIndex-1).get(colIndex-1).setF(cellXfs);
+                table.tables.get(rowIndex-1).get(colIndex-1).setS(cellXfs);
             }else if (inlineStr){
                 obj += value;
             }else{
                 table.add(rowIndex-1,colIndex-1, value);
-                table.tables.get(rowIndex-1).get(colIndex-1).setF(cellXfs);
+                table.tables.get(rowIndex-1).get(colIndex-1).setS(cellXfs);
             }
             
         }

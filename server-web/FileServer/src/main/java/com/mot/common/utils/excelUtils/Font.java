@@ -8,6 +8,7 @@ public class Font {
     public double size;
     public String color;
     public String name;
+    
 
     public double getSize() {
         return size;

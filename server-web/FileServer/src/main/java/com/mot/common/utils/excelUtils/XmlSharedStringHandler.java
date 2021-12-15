@@ -32,7 +32,7 @@ public class XmlSharedStringHandler extends DefaultHandler implements Handler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if (qName.endsWith("t")){
+        if (qName.endsWith("si")){
             List<String> list = data.get(currentIndex);
             if (list.size() > max){
                 data.add(new ArrayList<>(max));
@@ -45,15 +45,15 @@ public class XmlSharedStringHandler extends DefaultHandler implements Handler {
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (qName.endsWith("t")){
-            current.add(obj);
+        if (qName.endsWith("si")){
+            current.add(obj.replaceAll("\n","</br>"));
             obj = "";
         }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        obj = new String(ch,start,length);
+        obj += new String(ch,start,length);
     }
 
     @Override
