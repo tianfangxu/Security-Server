@@ -1,5 +1,7 @@
 package com.mot.service;
 
+import com.mot.common.excel.ExcelProcess;
+import com.mot.common.excel.entity.Table;
 import com.mot.common.utils.excelUtils.ZipUtils;
 import com.mot.entity.FileEntity;
 import com.mot.handler.file.FileHandler;
@@ -77,25 +79,14 @@ public class FileServiceImpl implements FileService {
                 File n = new File("/tmp/" + file.getName());
                 n.createNewFile();
                 file.transferTo(n);
-                String body = ZipUtils.unzip(n);
-                html = "<!DOCTYPE html>\n" +
-                        "<html lang=\"en\">\n" +
-                        "<head>\n" +
-                        "    <meta charset=\"UTF-8\">\n" +
-                        "    <title>Title</title>\n" +
-                        "</head>\n" +
-                        "<body>"+body+"</body>\n" +
-                        "</html>";
+                Table table = ExcelProcess.process(n);
+                html = ExcelProcess.toHtml(table);
                 n.delete();
             }
             
             ServletOutputStream outputStream = response.getOutputStream();
             outputStream.write(html.getBytes());
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
     }
