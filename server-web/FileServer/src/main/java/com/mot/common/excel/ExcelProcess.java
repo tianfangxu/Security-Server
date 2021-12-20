@@ -171,15 +171,15 @@ public class ExcelProcess {
         for (int i = 0; i < sheets.size(); i++) {
             Sheet sheet = sheets.get(i);
             builder.append("<li><input id=\"tab"+(i+1)+"\" type=\"radio\" name=\"tab\" "+(i==0?"checked":"")+"><label for=\"tab"+(i+1)+"\">sheet"+(i+1)+"</label><div class=\"content\">");
-            builder.append("<table border=\"1\"  cellspacing=\"0\" cellpadding=\"0\" "+parseStyle(sheet.getStyle())+">");
+            builder.append("<table cellspacing=\"0\" cellpadding=\"0\" "+Style.putStyle(sheet.getStyle())+">");
             List<RowData> rowDatas = sheet.getRowDatas();
             for (int j = 0; j < rowDatas.size(); j++) {
                 RowData rowData = rowDatas.get(j);
-                builder.append("<tr "+parseStyle(rowData.getStyle())+">");
+                builder.append("<tr "+Style.putStyle(rowData.getStyle())+">");
                 List<Cell> cells = rowData.getCells();
                 for (int k = 0; k < cells.size(); k++) {
                     Cell cell = cells.get(k);
-                    builder.append("<td "+parseStyle(cell==null?null:cell.getStyle()));
+                    builder.append("<td "+Style.putStyle(cell==null?null:cell.getStyle()));
                     builder.append(parseValue(cell));
                 }
                 builder.append("</tr>");
@@ -187,9 +187,9 @@ public class ExcelProcess {
             builder.append("</table>");
             builder.append("</div></li>");
         }
-        return builder.append(pos).toString();
+        String s = builder.append(pos).toString();
+        return s;
     }
-
     private static String parseValue(Cell cell){
         StringBuilder builder = new StringBuilder();
         if (cell != null){
@@ -201,45 +201,10 @@ public class ExcelProcess {
             }
         }
         builder.append(">");
-        String s = "%s";
-        if (cell != null && cell.getStyle() !=null){
-            if (cell.getStyle().getB()!=null && cell.getStyle().getB()) {
-                s = "<b>" +s+ "</b>";
-            }
-            if (cell.getStyle().getI()!=null&&cell.getStyle().getI()){
-                s = "<i>" +s+ "</i>";
-            }
-            if (cell.getStyle().getU()!=null&&cell.getStyle().getU()){
-                s = "<u>" +s+ "</u>";
-            }
-        }
-        return builder.append(String.format(s,cell!=null?cell.getValue()!=null?cell.getValue():"":"")+"</td>").toString();
+        builder.append(Style.putValue(cell.getStyle(),cell.getValue()));
+        return builder.append("</td>").toString();
     }
-    
-    private static String parseStyle(Style style){
-        if (style != null){
-            StringBuilder stringBuilder = new StringBuilder(" style=\"");
-            if (style.getSize() != null && style.getSize() > 0){
-                stringBuilder.append(";font-size: "+style.getSize()+"px");
-            }
-            if (!TableUtil.isBlank(style.getTypeface())){
-                stringBuilder.append(";font-family:"+style.getTypeface());
-            }
-            if (!TableUtil.isBlank(style.getColor())){
-                stringBuilder.append(";color: "+style.getColor());
-            }
-            if (!TableUtil.isBlank(style.getAlign())){
-                stringBuilder.append(";text-align: "+style.getAlign());
-            }
-            if (!TableUtil.isBlank(style.getBgColor())){
-                stringBuilder.append("; background-color: "+style.getBgColor());
-            }
-            return stringBuilder.append("\" ").toString();
-        }
-        return "";
-    }
-    
-    private static final String pre = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Title</title></head><style>*{margin:0;padding:0}ul{position:relative;margin:10px}ul li{list-style:none}ul li input{display:none}ul li label{float:left;width:100px;text-align:center;line-height:30px;border:1px solid #000;border-right:0;box-sizing:border-box;cursor:pointer;transition:all .3s}ul li input:checked+label{color:#fff;background-color:#302e2e}ul li:last-child label{border-right:1px solid #000}ul li .content{opacity:0;position:absolute;left:0;top:31px;width:100%;border:1px solid #000;box-sizing:border-box;font-size:24px;text-align:center;transition:all .3s;padding: 5px;}ul li input:checked~.content{opacity:1}</style><body><div class=\"tabs\"><ul>";
+    private static final String pre = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Title</title></head><style>*{margin:0;padding:0}ul{position:relative;margin:10px}ul li{list-style:none}ul li input{display:none}ul li label{float:left;width:100px;text-align:center;line-height:30px;border:1px solid #000;border-right:0;box-sizing:border-box;cursor:pointer;transition:all .3s}ul li input:checked+label{color:#fff;background-color:#302e2e}ul li:last-child label{border-right:1px solid #000}ul li .content{opacity:0;position:absolute;left:0;top:31px;width:100%;border-top:1px solid #000;box-sizing:border-box;font-size:24px;text-align:center;transition:all .3s;padding: 5px;}ul li input:checked~.content{opacity:1}table {border-top: 1px solid #e8eaec;border-left: 1px solid #e8eaec;}td { border-right: 1px solid #e8eaec;border-bottom: 1px solid #e8eaec;padding: 5px;}</style><body><div class=\"tabs\"><ul>";
     private static final String pos = "</ul></div></body></html>";
 
 

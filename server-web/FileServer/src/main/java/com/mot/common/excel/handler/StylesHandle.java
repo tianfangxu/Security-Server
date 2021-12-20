@@ -55,38 +55,7 @@ public class StylesHandle extends DefaultHandler {
         }
         
         if (isfonts && type == 1){
-            if (qName.endsWith("b")){
-                current.b = "b".equals(qName);
-            }
-            if (qName.endsWith("i")){
-                current.i = "i".equals(qName);
-            }
-            if (qName.endsWith("u")){
-                current.u = "u".equals(qName);
-            }
-            if (qName.endsWith("sz")){
-                String val = attributes.getValue("val");
-                if (!TableUtil.isBlank(val)){
-                    current.size = TableUtil.parseDouble(val,12);
-                }
-            }
-            if (qName.endsWith("color")) {
-                String color = "rgb(0,0,0)";
-                String theme = attributes.getValue("theme");
-                String tint = attributes.getValue("tint");
-                String argb = attributes.getValue("rgb");
-                String s = Theme.getColor(TableUtil.parseInt(theme, Integer.MAX_VALUE),TableUtil.parseDouble(tint,0d));
-                if (s == null){
-                    String s1 = ColorUtil.hexadecimalToRgb(argb);
-                    color = s1!=null?s1:color;
-                }else{
-                    color = s;
-                }
-                current.color = color;
-            }
-            if (qName.endsWith("name")) {
-                current.typeface= attributes.getValue("val");
-            }
+            Style.setStyleCommon(qName,attributes,current);
         }else if ( isfills && type == 2){
             if(qName.endsWith("fgColor")){
                 String color = "rgb(255,255,255)";

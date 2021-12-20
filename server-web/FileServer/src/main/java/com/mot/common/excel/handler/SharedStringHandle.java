@@ -1,5 +1,6 @@
 package com.mot.common.excel.handler;
 
+import com.mot.common.excel.entity.Style;
 import com.mot.common.excel.utils.TableUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -20,6 +21,10 @@ public class SharedStringHandle extends DefaultHandler {
     boolean smallOrBig;
     int currntI = 0;
     String obj = "";
+    String preLabel = "";
+    String posLabel = "";
+    Style currentStyle = null;
+    boolean isrRPr = false;
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -44,6 +49,14 @@ public class SharedStringHandle extends DefaultHandler {
                 }
             }
         }
+        if (qName.endsWith("rPr")){
+            preLabel = "";
+            currentStyle = new Style();
+            isrRPr = true;
+        }
+        if (isrRPr){
+            Style.setStyleCommon(qName,attributes,currentStyle);
+        }
     }
 
     @Override
@@ -61,11 +74,19 @@ public class SharedStringHandle extends DefaultHandler {
             list.add(obj.replaceAll("\n","</br>"));
             obj = "";
         }
+        if (qName.endsWith("rPr")){
+            isrRPr = false;
+        }
     }
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        obj += new String(ch,start,length);
+        String obj = new String(ch, start, length);
+        if (currentStyle != null){
+            obj = Style.getHtmlValue(currentStyle,obj,"span");
+            currentStyle = null;
+        }
+        this.obj += obj;
     }
     
 

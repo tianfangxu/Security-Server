@@ -2,6 +2,11 @@ server:
   port: 32002
   servlet:
     context-path: /fileserv
+    
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
 
 logging:
   level:
