@@ -69,7 +69,9 @@ public class SheetHandle extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (qName.endsWith("c")){
-            getNode(current).v = obj;
+            System.out.println("get:"+current);
+            Node node = getNode(current);
+            node.v = obj;
             obj = "";
         }
     }
@@ -95,7 +97,7 @@ public class SheetHandle extends DefaultHandler {
         }
         List<Node> row = sheets.get(x);
         if (row.size() <= y){
-            for (int i = row.size()-1; i < y; i++) {
+            for (int i = row.size()-1; i < y-1; i++) {
                 row.add(placeholder);
             }
             row.add(node);

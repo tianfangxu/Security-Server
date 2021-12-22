@@ -1,6 +1,7 @@
 package com.mot.common.excel.handler;
 
 import com.mot.common.excel.entity.Style;
+import com.mot.common.excel.enums.ColorIndex;
 import com.mot.common.excel.enums.Theme;
 import com.mot.common.excel.utils.ColorUtil;
 import com.mot.common.excel.utils.TableUtil;
@@ -58,17 +59,17 @@ public class StylesHandle extends DefaultHandler {
             Style.setStyleCommon(qName,attributes,current);
         }else if ( isfills && type == 2){
             if(qName.endsWith("fgColor")){
-                String color = "rgb(255,255,255)";
                 String theme = attributes.getValue("theme");
+                String indexed = attributes.getValue("indexed");
                 String tint = attributes.getValue("tint");
                 String argb = attributes.getValue("rgb");
-                String s = Theme.getColor(TableUtil.parseInt(theme, Integer.MAX_VALUE),TableUtil.parseDouble(tint,0d));
-                if (s == null){
-                    String s1 = ColorUtil.hexadecimalToRgb(argb);
-                    color = s1!=null?s1:color;
-                }else {
-                    color = s;
+                String s;
+                if (theme != null) {
+                    s = Theme.getColor(TableUtil.parseInt(theme, Integer.MAX_VALUE),TableUtil.parseDouble(tint,0d));
+                }else{
+                    s = ColorIndex.getColor(TableUtil.parseInt(indexed, Integer.MAX_VALUE),TableUtil.parseDouble(tint,0d));
                 }
+                String color = s == null?ColorUtil.hexadecimalToRgb(argb):s;
                 current.bgColor = color;
             }
         }else if (iscellXfs && type == 3){

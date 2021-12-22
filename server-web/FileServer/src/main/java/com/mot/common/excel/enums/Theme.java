@@ -33,7 +33,6 @@ public enum Theme {
     }
     
     public static String getColor(int code,double tint){
-        
         for (Theme value : values()) {
             if (value.code == code){
                 String s = ColorUtil.hexadecimalToRgbWithTint(value.color, tint);
