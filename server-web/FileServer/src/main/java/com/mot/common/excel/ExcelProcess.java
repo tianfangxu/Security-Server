@@ -10,12 +10,12 @@ import com.mot.common.excel.handler.SheetHandle;
 import com.mot.common.excel.handler.StylesHandle;
 import com.mot.common.excel.utils.TableUtil;
 import org.xml.sax.helpers.DefaultHandler;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -77,12 +77,10 @@ public class ExcelProcess {
     private static Sheet sheetAssembly(SharedStringHandle sharedStringHandle, StylesHandle stylesHandle, SheetHandle sheetHandle) {
         List<List<SheetHandle.Node>> list = sheetHandle.getSheets();
         Sheet sheet = new Sheet();
-        Map<Integer,Integer> sheetMaxCountSid = new HashMap<>();
         List<int[]> mergeCell = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
             List<SheetHandle.Node> row = list.get(i);
             RowData rowData = new RowData();
-            Map<Integer,Integer> rowMaxCountSid = new HashMap<>();
             for (int j = 0; j < row.size(); j++) {
                 if (isMerge(i,j,mergeCell)){
                     continue;
@@ -108,36 +106,12 @@ public class ExcelProcess {
                     }
                     Integer sid = node.getSid();
                     if (sid != null){
-                        Integer value = sheetMaxCountSid.get(sid);
-                        Integer integer = rowMaxCountSid.get(sid);
-                        sheetMaxCountSid.put(sid, value==null?0:value);
-                        rowMaxCountSid.put(sid, integer==null?0:integer);
                         cell.setStyle(stylesHandle.getStyle(sid));
                     } 
                 }
                 rowData.getCells().add(cell);
             }
-            Integer sid = getMaxCountSid(rowMaxCountSid);
-            if (sid != null){
-                Style style = stylesHandle.getStyle(sid);
-                rowData.setStyle(style);
-                rowData.getCells().forEach(cell ->{
-                    if(cell != null && cell.getStyle() == style){
-                        cell.setStyle(null);
-                    }
-                });
-            }
             sheet.getRowDatas().add(rowData);
-        }
-        Integer sid = getMaxCountSid(sheetMaxCountSid);
-        if (sid != null){
-            Style style = stylesHandle.getStyle(sid);
-            sheet.setStyle(style);
-            sheet.getRowDatas().forEach(r->r.getCells().forEach(cell -> {
-                if(cell != null && cell.getStyle() == style){
-                    cell.setStyle(null);
-                }
-            }));
         }
         return sheet;
     }
@@ -152,17 +126,6 @@ public class ExcelProcess {
              }
         }
         return false;
-    }
-
-    public static Integer getMaxCountSid(Map<Integer,Integer> map){
-        int maxCount = 0;
-        Integer sid = null;
-        for (Map.Entry<Integer,Integer> entry :map.entrySet()){
-            if (entry.getValue() > maxCount){
-                sid =entry.getKey();
-            }
-        }
-        return sid;
     }
     
     public static String toHtml(Table table){

@@ -69,7 +69,6 @@ public class SheetHandle extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (qName.endsWith("c")){
-            System.out.println("get:"+current);
             Node node = getNode(current);
             node.v = obj;
             obj = "";

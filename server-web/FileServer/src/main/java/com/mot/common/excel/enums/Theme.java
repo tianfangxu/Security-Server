@@ -35,6 +35,9 @@ public enum Theme {
     public static String getColor(int code,double tint){
         for (Theme value : values()) {
             if (value.code == code){
+                if (code == 0 || code == 2){
+                    
+                }
                 String s = ColorUtil.hexadecimalToRgbWithTint(value.color, tint);
                 return s;
             }
@@ -47,5 +50,9 @@ public enum Theme {
     Theme(int code, String color) {
         this.code = code;
         this.color = color;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getColor(0, -0.499984740745262d));
     }
 }
