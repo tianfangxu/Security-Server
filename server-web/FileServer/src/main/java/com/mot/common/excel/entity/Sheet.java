@@ -43,4 +43,17 @@ public class Sheet {
         this.style = style;
         return this;
     }
+    
+    public int getMaxColIndex(){
+        int max = 0;
+        if (rowDatas == null){
+            return max;
+        }
+        for (RowData rowData : rowDatas) {
+            if (rowData.getCells().size() > max){
+                max = rowData.getCells().size();
+            }
+        }
+        return max;
+    }
 }

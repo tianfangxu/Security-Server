@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class Table {
     List<Sheet> sheets;
+    String name;
 
     public List<Sheet> getSheets() {
         return sheets;
@@ -25,5 +26,13 @@ public class Table {
             sheets = new ArrayList<>();
         }
         sheets.add(sheet);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

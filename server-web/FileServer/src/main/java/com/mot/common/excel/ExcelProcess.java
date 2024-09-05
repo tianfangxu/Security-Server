@@ -44,6 +44,7 @@ public class ExcelProcess {
                 getRegister().handlingEvents(zipEntry.getName(),zipFile.getInputStream(zipEntry));
             }
             table = dataAssembly();
+            table.setName(file.getName());
         }finally {
             registerThreadLocal.remove();
         }
@@ -129,10 +130,11 @@ public class ExcelProcess {
     }
     
     public static String toHtml(Table table){
-        StringBuilder builder = new StringBuilder(pre);
+        StringBuilder builder = new StringBuilder(pre1).append(table.getName()).append(pre2);
         List<Sheet> sheets = table.getSheets();
         for (int i = 0; i < sheets.size(); i++) {
             Sheet sheet = sheets.get(i);
+            int maxColIndex = sheet.getMaxColIndex();
             builder.append("<li><input id=\"tab"+(i+1)+"\" type=\"radio\" name=\"tab\" "+(i==0?"checked":"")+"><label for=\"tab"+(i+1)+"\">sheet"+(i+1)+"</label><div class=\"content\">");
             builder.append("<table cellspacing=\"0\" cellpadding=\"0\" "+Style.putStyle(sheet.getStyle())+">");
             List<RowData> rowDatas = sheet.getRowDatas();
@@ -140,10 +142,14 @@ public class ExcelProcess {
                 RowData rowData = rowDatas.get(j);
                 builder.append("<tr "+Style.putStyle(rowData.getStyle())+">");
                 List<Cell> cells = rowData.getCells();
-                for (int k = 0; k < cells.size(); k++) {
-                    Cell cell = cells.get(k);
-                    builder.append("<td "+Style.putStyle(cell==null?null:cell.getStyle()));
-                    builder.append(parseValue(cell));
+                for (int k = 0; k < maxColIndex; k++) {
+                    if (k < cells.size()) {
+                        Cell cell = cells.get(k);
+                        builder.append("<td " + Style.putStyle(cell == null ? null : cell.getStyle()));
+                        builder.append(parseValue(cell));
+                    }else{
+                        builder.append("<td></td>");
+                    }
                 }
                 builder.append("</tr>");
             }
@@ -167,7 +173,8 @@ public class ExcelProcess {
         builder.append(Style.putValue(cell.getStyle(),cell.getValue()));
         return builder.append("</td>").toString();
     }
-    private static final String pre = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Title</title></head><style>*{margin:0;padding:0}ul{position:relative;margin:10px}ul li{list-style:none}ul li input{display:none}ul li label{float:left;width:100px;text-align:center;line-height:30px;border:1px solid #000;border-right:0;box-sizing:border-box;cursor:pointer;transition:all .3s}ul li input:checked+label{color:#fff;background-color:#302e2e}ul li:last-child label{border-right:1px solid #000}ul li .content{opacity:0;position:absolute;left:0;top:31px;width:100%;border-top:1px solid #000;box-sizing:border-box;font-size:24px;text-align:center;transition:all .3s;padding: 5px;}ul li input:checked~.content{opacity:1}table {border-top: 1px solid #e8eaec;border-left: 1px solid #e8eaec;}td { border-right: 1px solid #e8eaec;border-bottom: 1px solid #e8eaec;padding: 5px;}</style><body><div class=\"tabs\"><ul>";
+    private static final String pre1 = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>";
+    private static final String pre2 = "</title></head><style>*{margin:0;padding:0}ul{position:relative;margin:10px}ul li{list-style:none}ul li input{display:none}ul li label{float:left;width:100px;text-align:center;line-height:30px;border:1px solid #000;border-right:0;box-sizing:border-box;cursor:pointer;transition:all .3s}ul li input:checked+label{color:#fff;background-color:#302e2e}ul li:last-child label{border-right:1px solid #000}ul li .content{opacity:0;position:absolute;left:0;top:31px;width:100%;border-top:1px solid #000;box-sizing:border-box;font-size:24px;text-align:center;transition:all .3s;padding: 5px;}ul li input:checked~.content{opacity:1}table {border-top: 1px solid #e8eaec;border-left: 1px solid #e8eaec;}td { border-right: 1px solid #e8eaec;border-bottom: 1px solid #e8eaec;padding: 5px;}</style><body><div class=\"tabs\"><ul>";
     private static final String pos = "</ul></div></body></html>";
 
 

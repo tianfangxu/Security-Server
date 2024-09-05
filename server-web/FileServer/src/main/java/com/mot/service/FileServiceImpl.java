@@ -67,7 +67,7 @@ public class FileServiceImpl implements FileService {
             if (file == null || !(file.getOriginalFilename().endsWith(".xlsx") || file.getOriginalFilename().endsWith(".XLSX"))){
                 html = "ERROR: Only Support Excel Documents Of 2007 And Above.";
             }else{
-                File n = new File("/tmp/" + file.getName());
+                File n = new File("/tmp/" + file.getOriginalFilename());
                 n.createNewFile();
                 file.transferTo(n);
                 Table table = ExcelProcess.process(n);

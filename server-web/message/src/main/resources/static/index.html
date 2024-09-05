@@ -83,7 +83,7 @@
         margin-left: 550px;
         border-radius: 5px;
         text-align: center;
-        font-size: 8px;
+        font-size: 12px;
         font-weight: 200;
         color: aliceblue;
         background-color: #3f87c3;
@@ -135,7 +135,7 @@
                     <textarea class="main-right-bottom-input-textarea" id="out"></textarea>
                 </div>
                 <div class="main-right-bottom-submit">
-                    <div class="main-right-bottom-submit-button" onclick="send()">sned</div>
+                    <div class="main-right-bottom-submit-button" onclick="send()">send</div>
                 </div>
             </div>
         </div>
@@ -152,7 +152,7 @@
     })();
 
     function initWeb(){
-        websocket = new WebSocket('ws://139.196.51.214:31002/channel');
+        websocket = new WebSocket('ws://'+window.location.hostname+':7200/channel');
         websocket.onmessage = e => {
             const  data = JSON.parse(e.data);
             let h = document.getElementById("msgs").innerHTML;
@@ -245,11 +245,14 @@
                     reader.addEventListener("load", function () {
                         var cons = "<img style='max-width: 400px' src='"+reader.result+"' />";
                         let param2 = {type:1,body:cons,fromId:webUserId,from:document.getElementById("in").value};
+                        console.log(JSON.stringify(param2));
                         websocket.send(JSON.stringify(param2));
                     }, false);
                     reader.readAsDataURL(file);
                 }
-                tempFileSelect.parentNode.removeChild(tempFileSelect);
+                if (tempFileSelect.parentNode){
+                    tempFileSelect.parentNode.removeChild(tempFileSelect);
+                }
             };
         }
         tempFileSelect.click();
